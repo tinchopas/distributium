@@ -153,6 +153,13 @@ sonata_admin:
                     - sonata.demo.admin.color
                     - sonata.demo.admin.material
 
+            distributium_backend.group.test:
+                label: Test
+                icon:  '<i class="fa fa-play-circle"></i>'
+                items:
+                    - distributium_backend.admin.item
+                    - distributium_backend.admin.category
+
     assets:
         stylesheets:
             # The sandbox includes default pre-optimized version of some css and js

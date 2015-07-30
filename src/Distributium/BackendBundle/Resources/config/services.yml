@@ -1,0 +1,18 @@
+services:
+    distributium_backend.admin.item:
+        class: Distributium\BackendBundle\Admin\ItemAdmin
+        arguments: [~, Distributium\BackendBundle\Entity\Item, DistributiumBackendBundle:ItemAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: test, label: Item}
+
+    distributium_backend.admin.category:
+        class: Distributium\BackendBundle\Admin\CategoryAdmin
+        arguments: [~, Distributium\BackendBundle\Entity\Category, DistributiumBackendBundle:CategoryAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Category}
+
+    distributium_backend.admin.image:
+        class: Distributium\BackendBundle\Admin\ImageAdmin
+        arguments: [~, Distributium\BackendBundle\Entity\Image, DistributiumBackendBundle:ImageAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Image}
