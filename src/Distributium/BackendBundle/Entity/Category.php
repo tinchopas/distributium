@@ -126,4 +126,7 @@ class Category
         return $this->getName();
     }
 
+    function getIdentifier() {
+        return sprintf('_%s', $this->getId());
+    }
 }

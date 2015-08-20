@@ -3,6 +3,7 @@
 namespace Distributium\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Item
@@ -36,6 +37,20 @@ class Item
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="raw_description", type="text")
+     */
+    private $rawDescription;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description_formatter", type="string", length=255)
+     */
+    private $descriptionFormatter;
+
+    /**
      * @var Object
      *
      * @ORM\ManyToOne(targetEntity="Category")
@@ -52,21 +67,21 @@ class Item
     private $image;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Item", mappedBy="myConnections")
-     **/
-    private $connectedWithMe;
+     * @ORM\OneToMany(targetEntity="ItemConnection" , mappedBy="item" , cascade={"all"}, orphanRemoval=true)
+     * */
+    private $ic;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Item", inversedBy="friendsWithMe")
-     * @ORM\JoinTable(name="connections",
-     *      joinColumns={@ORM\JoinColumn(name="item_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="connection_item_id", referencedColumnName="id")}
-     *      )
-     **/
+     * @ORM\OneToMany(targetEntity="ItemConnection" , mappedBy="cwi" , cascade={"all"}, orphanRemoval=true)
+     * */
+    private $cwi;
+
     private $myConnections;
 
+
     public function __construct() {
-        $this->connectedWithMe = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ic = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cwi = new \Doctrine\Common\Collections\ArrayCollection();
         $this->myConnections = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -127,6 +142,52 @@ class Item
     }
 
     /**
+     * Set rawDescription
+     *
+     * @param string $rawDescription
+     * @return Item
+     */
+    public function setRawDescription($rawDescription)
+    {
+        $this->rawDescription = $rawDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get rawDescription
+     *
+     * @return string 
+     */
+    public function getRawDescription()
+    {
+        return $this->rawDescription;
+    }
+
+    /**
+     * Set descriptionFormatter
+     *
+     * @param string $descriptionFormatter
+     * @return Item
+     */
+    public function setDescriptionFormatter($descriptionFormatter)
+    {
+        $this->descriptionFormatter = $descriptionFormatter;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionFormatter
+     *
+     * @return string 
+     */
+    public function getDescriptionFormatter()
+    {
+        return $this->descriptionFormatter;
+    }
+
+    /**
      * Set category
      *
      * @param Category $category
@@ -171,14 +232,96 @@ class Item
         return $this;
     }
 
-    public function addMyConnection($connection){
-
-        $this->myConnections[] = $connection;
-
-    }
-
-    public function removeMyConnection($connection)
+    public function __toString()
     {
-        $this->myConnection->removeElement($connection);
+        return $this->getName();
     }
+
+    // Important 
+    public function getMyConnection()
+    {
+        $myConnections = new ArrayCollection();
+
+        foreach($this->ic as $ic)
+        {
+            $myConnections[] = $ic->getCwi();
+        }
+        foreach($this->cwi as $ic)
+        {
+            $myConnections[] = $ic->getItem();
+        }
+
+        return $myConnections;
+    }
+
+    // Important
+    public function setMyConnection($myConnections)
+    {
+        $origConnections = $this->getMyConnection();
+
+        foreach($myConnections as $i) {
+            if (!$origConnections->contains($i)) {
+                $ic = new ItemConnection();
+
+                $ic->setItem($this);
+                $ic->setCwi($i);
+
+                $this->addIc($ic);
+            }
+            $origConnections->removeElement($i);
+
+        }
+
+        foreach ($origConnections as $oc) {
+            foreach($this->ic as $ic)
+            {
+                if ($ic->getCwi()->getId() == $oc->getId()) {
+                    $this->removeIc($ic);
+                }
+            }
+            foreach($this->cwi as $ic)
+            {
+                if ($ic->getItem()->getId() == $oc->getId()) {
+                    $this->removeCwi($ic);
+                    $icToRemove = $ic;
+                }
+            }
+        }
+    }
+
+    public function getItem()
+    {
+        return $this;
+    }
+
+    public function addIc($itemConnection)
+    {
+        $this->ic[] = $itemConnection;
+    }
+    
+    public function getIc()
+    {
+        return $this->ic;
+    }
+    
+    public function removeIc($itemConnection)
+    {
+        return $this->ic->removeElement($itemConnection);
+    }
+
+    public function removeCwi($itemConnection)
+    {
+        return $this->cwi->removeElement($itemConnection);
+    }
+
+    public function addCwi($itemConnection)
+    {
+        $this->cwi[] = $itemConnection;
+    }
+    
+    public function getCwi()
+    {
+        return $this->cwi;
+    }
+    
 }
