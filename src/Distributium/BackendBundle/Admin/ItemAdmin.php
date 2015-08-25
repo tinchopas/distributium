@@ -148,17 +148,20 @@ class ItemAdmin extends Admin
 
         $formMapper
 		->add('name', 'text', array('label' => 'Name'))
+		->add('image', 'sonata_type_admin', array('required' => false))
+                ->add('company', 'entity', array('label' => 'Company', 'class' => 'Distributium\BackendBundle\Entity\Company', 'required' => false))
+                ->add('category', 'entity', array('label' => 'Category', 'class' => 'Distributium\BackendBundle\Entity\Category', 'required' => false))
+                ->add('myConnection', 'sonata_type_model', $connectionOptions)
 		->add('description', 'sonata_formatter_type', array(
 					'source_field'         => 'rawDescription',
-					'source_field_options' => array('attr' => array('class' => 'span10', 'rows' => 20)),
+					'source_field_options' => array('attr' => array('class' => 'span6', 'rows' => 10)),
 					'format_field'         => 'descriptionFormatter',
 					'target_field'         => 'description',
 					'ckeditor_context'     => 'default',
-					'event_dispatcher'     => $formMapper->getFormBuilder()->getEventDispatcher()
+					'event_dispatcher'     => $formMapper->getFormBuilder()->getEventDispatcher(),
+                                        'required' => false
 					))
-		->add('image', 'sonata_type_admin')
-                ->add('category', 'entity', array('label' => 'Category', 'class' => 'Distributium\BackendBundle\Entity\Category'))
-                ->add('myConnection', 'sonata_type_model', $connectionOptions);
+		;
 
     }
 

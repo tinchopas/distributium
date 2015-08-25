@@ -16,3 +16,9 @@ services:
         arguments: [~, Distributium\BackendBundle\Entity\Image, DistributiumBackendBundle:ImageAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: Image}
+
+    distributium_backend.admin.company:
+        class: Distributium\BackendBundle\Admin\CompanyAdmin
+        arguments: [~, Distributium\BackendBundle\Entity\Company, DistributiumBackendBundle:CompanyAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Company}

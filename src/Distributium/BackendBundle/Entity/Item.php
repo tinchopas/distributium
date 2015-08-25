@@ -78,6 +78,14 @@ class Item
 
     private $myConnections;
 
+    /**
+     * @var Object
+     *
+     * @ORM\ManyToOne(targetEntity="Company")
+     * @ORM\JoinColumn(name="company_id", referencedColumnName="id")
+     */
+    private $company;
+
 
     public function __construct() {
         $this->ic = new \Doctrine\Common\Collections\ArrayCollection();
@@ -323,5 +331,27 @@ class Item
     {
         return $this->cwi;
     }
-    
+
+    /**
+     * Set company
+     *
+     * @param Company $company
+     * @return Item
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
+    /**
+     * Get company
+     *
+     * @return Company
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
 }
