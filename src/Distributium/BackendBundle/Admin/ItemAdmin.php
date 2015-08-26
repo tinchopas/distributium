@@ -147,7 +147,9 @@ class ItemAdmin extends Admin
         );
 
         $formMapper
+            ->with('General', array('class' => 'col-md-12'))
 		->add('name', 'text', array('label' => 'Name'))
+		->add('email', 'text', array('label' => 'Email'))
 		->add('image', 'sonata_type_admin', array('required' => false))
                 ->add('company', 'entity', array('label' => 'Company', 'class' => 'Distributium\BackendBundle\Entity\Company', 'required' => false))
                 ->add('category', 'entity', array('label' => 'Category', 'class' => 'Distributium\BackendBundle\Entity\Category', 'required' => false))
@@ -161,6 +163,19 @@ class ItemAdmin extends Admin
 					'event_dispatcher'     => $formMapper->getFormBuilder()->getEventDispatcher(),
                                         'required' => false
 					))
+            ->end()
+		;
+	$formMapper
+		->with('Filters', array('class' => 'col-md-12'))
+                ->add('lodgingType', 'sonata_type_model', array('required' => false, 'class' => 'Distributium\BackendBundle\Entity\LodgingType', 'multiple'=>true, 'btn_add'=>false))
+		->add('lodgingSizeFrom')
+		->add('lodgingSizeTo')
+		->add('lodgingCategory', 'choice', array(
+                        'required' => false,
+			'multiple' => true, 
+			'sortable' => true, 
+			'choices' =>  array('1' => '*', '2' => '**', 3 => '***', '4' => '****', '5' => '*****', '6' => '******', '7' => '*******')))
+		->end()
 		;
 
     }

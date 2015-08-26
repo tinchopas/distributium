@@ -32,6 +32,13 @@ class Item
     /**
      * @var string
      *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
@@ -49,6 +56,27 @@ class Item
      * @ORM\Column(name="description_formatter", type="string", length=255)
      */
     private $descriptionFormatter;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lodging_size_from", type="integer", nullable=true)
+     */
+    private $lodgingSizeFrom;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lodging_size_to", type="integer", nullable=true)
+     */
+    private $lodgingSizeTo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lodgingCategory", type="simple_array", nullable=true)
+     */
+    private $lodgingCategory;
 
     /**
      * @var Object
@@ -86,11 +114,18 @@ class Item
      */
     private $company;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="LodgingType", inversedBy="items")
+     * @ORM\JoinTable(name="item_lodgingtype")
+     *
+     * */
+    private $lodgingTypes;
 
     public function __construct() {
         $this->ic = new \Doctrine\Common\Collections\ArrayCollection();
         $this->cwi = new \Doctrine\Common\Collections\ArrayCollection();
         $this->myConnections = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->lodgingTypes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -124,6 +159,29 @@ class Item
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Item
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**
@@ -353,5 +411,89 @@ class Item
     public function getCompany()
     {
         return $this->company;
+    }
+
+    public function addLodgingType($lodgingType)
+    {
+        $this->lodgingTypes[] = $lodgingType;
+    }
+    
+    public function getLodgingType()
+    {
+        return $this->lodgingTypes;
+    }
+    
+    public function removeLodgingType($lodgingType)
+    {
+        return $this->lodgingTypes->removeElement($lodgingType);
+    }
+
+    /**
+     * Set lodgingSizeFrom
+     *
+     * @param Integer $lodgingSizeFrom
+     * @return Item
+     */
+    public function setLodgingSizeFrom($lodgingSizeFrom)
+    {
+        $this->lodgingSizeFrom = $lodgingSizeFrom;
+
+        return $this;
+    }
+
+    /**
+     * Get lodgingSizeFrom
+     *
+     * @return Integer
+     */
+    public function getLodgingSizeFrom()
+    {
+        return $this->lodgingSizeFrom;
+    }
+
+    /**
+     * Set lodgingSizeTo
+     *
+     * @param Integer $lodgingSizeTo
+     * @return Item
+     */
+    public function setLodgingSizeTo($lodgingSizeTo)
+    {
+        $this->lodgingSizeTo = $lodgingSizeTo;
+
+        return $this;
+    }
+
+    /**
+     * Get lodgingSizeTo
+     *
+     * @return Integer
+     */
+    public function getLodgingSizeTo()
+    {
+        return $this->lodgingSizeTo;
+    }
+
+    /**
+     * Set lodgingCategory
+     *
+     * @param Array $lodgingCategory
+     * @return Item
+     */
+    public function setLodgingCategory($lodgingCategory)
+    {
+        $this->lodgingCategory = $lodgingCategory;
+
+        return $this;
+    }
+
+    /**
+     * Get lodgingCategory
+     *
+     * @return Array
+     */
+    public function getLodgingCategory()
+    {
+        return $this->lodgingCategory;
     }
 }

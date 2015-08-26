@@ -15,7 +15,7 @@ parameters:
     secret:             ThisTokenIsNotSoSecretChangeIt
 
     # Sonata Admin Options
-    sonata_admin.title:             Sonata Project
+    sonata_admin.title:             Distributium
     sonata_admin.logo_title:        /bundles/sonataadmin/logo_title.png
 
     # Sonata News Options
@@ -27,7 +27,7 @@ parameters:
     sonata_news.comment.email_from: no-reply@example.org
 
     # Sonata Media options
-    sonata_media.cdn.host:          http://demo.sonata-project.org/uploads/media
+    sonata_media.cdn.host:          http://beta.distributium.com/uploads/media
 
     # Sonata User Options
     sonata_user.google_authenticator.server:  demo.sonata-project.org

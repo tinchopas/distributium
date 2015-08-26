@@ -154,12 +154,13 @@ sonata_admin:
                     - sonata.demo.admin.material
 
             distributium_backend.group.test:
-                label: Test
+                label: Distributium
                 icon:  '<i class="fa fa-play-circle"></i>'
                 items:
                     - distributium_backend.admin.item
                     - distributium_backend.admin.category
                     - distributium_backend.admin.company
+                    - distributium_backend.admin.lodging_type
 
     assets:
         stylesheets:
