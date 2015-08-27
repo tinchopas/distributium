@@ -168,16 +168,36 @@ class ItemAdmin extends Admin
 	$formMapper
 		->with('Filters', array('class' => 'col-md-12'))
                 ->add('lodgingType', 'sonata_type_model', array('required' => false, 'class' => 'Distributium\BackendBundle\Entity\LodgingType', 'multiple'=>true, 'btn_add'=>false))
-		->add('lodgingSizeFrom')
-		->add('lodgingSizeTo')
+		->add('lodgingSize', 'choice', array(
+                        'required' => false,
+			'multiple' => true, 
+			'sortable' => true, 
+			'choices' =>  array('1' => '1',
+                        '2-5' => '2-5', 
+			'6-10' => '6-10', 
+			'11-20' => '11-20', 
+			'21-35' => '21-35', 
+			'36-50' => '36-50', 
+			'51-100' => '51-100', 
+			'101+' => '101+'
+		)))
 		->add('lodgingCategory', 'choice', array(
                         'required' => false,
 			'multiple' => true, 
 			'sortable' => true, 
-			'choices' =>  array('1' => '*', '2' => '**', 3 => '***', '4' => '****', '5' => '*****', '6' => '******', '7' => '*******')))
+			'choices' =>  array('0' => 'Uncategorized', 
+			'1' => '1 Star', 
+			'2' => '2 Stars', 
+			'3' => '3 Stars', 
+			'4' => '4 Stars', 
+			'4gl' => '4 Stars GL', 
+			'4s' => '4 Stars S',
+			'5' => '5 Stars',
+			'5gl' => '5 Stars GL',
+			'5s' => '5 Stars S'
+		)))
 		->end()
 		;
-
     }
 
     /**

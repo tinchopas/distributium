@@ -57,24 +57,18 @@ class Item
      */
     private $descriptionFormatter;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="lodging_size_from", type="integer", nullable=true)
-     */
-    private $lodgingSizeFrom;
 
     /**
-     * @var integer
+     * @var simple_array
      *
-     * @ORM\Column(name="lodging_size_to", type="integer", nullable=true)
+     * @ORM\Column(name="lodging_size", type="simple_array", nullable=true)
      */
-    private $lodgingSizeTo;
+    private $lodgingSize;
 
     /**
-     * @var integer
+     * @var simple_array
      *
-     * @ORM\Column(name="lodgingCategory", type="simple_array", nullable=true)
+     * @ORM\Column(name="lodging_category", type="simple_array", nullable=true)
      */
     private $lodgingCategory;
 
@@ -429,49 +423,26 @@ class Item
     }
 
     /**
-     * Set lodgingSizeFrom
+     * Set lodgingSize
      *
-     * @param Integer $lodgingSizeFrom
+     * @param Array $lodgingSize
      * @return Item
      */
-    public function setLodgingSizeFrom($lodgingSizeFrom)
+    public function setLodgingSize($lodgingSize)
     {
-        $this->lodgingSizeFrom = $lodgingSizeFrom;
+        $this->lodgingSize = $lodgingSize;
 
         return $this;
     }
 
     /**
-     * Get lodgingSizeFrom
+     * Get lodgingSize
      *
-     * @return Integer
+     * @return Array
      */
-    public function getLodgingSizeFrom()
+    public function getLodgingSize()
     {
-        return $this->lodgingSizeFrom;
-    }
-
-    /**
-     * Set lodgingSizeTo
-     *
-     * @param Integer $lodgingSizeTo
-     * @return Item
-     */
-    public function setLodgingSizeTo($lodgingSizeTo)
-    {
-        $this->lodgingSizeTo = $lodgingSizeTo;
-
-        return $this;
-    }
-
-    /**
-     * Get lodgingSizeTo
-     *
-     * @return Integer
-     */
-    public function getLodgingSizeTo()
-    {
-        return $this->lodgingSizeTo;
+        return $this->lodgingSize;
     }
 
     /**
