@@ -1,0 +1,6 @@
+services:
+    distributium.frontend.block.productlist:
+        class: Distributium\FrontendBundle\Block\ProductlistBlockService
+        arguments: [ "distributium.frontend.block.productlist", @templating ]
+        tags:
+            - { name: sonata.block }

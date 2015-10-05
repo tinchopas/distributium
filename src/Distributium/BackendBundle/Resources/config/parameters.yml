@@ -1,0 +1,21 @@
+parameters:
+    lodgingSize:
+        1: 1
+        10: 2-5
+        100: 6-10
+        1000: 11-20
+        10000: 21-35
+        100000: 36-50
+        1000000: 51-100
+        10000000: 101+
+    lodgingCategory:
+        1: Uncategorized
+        10: 1 Star
+        100: 2 Stars
+        1000: 3 Stars
+        10000: 4 Stars
+        100000: 4 Stars GL
+        1000000: 4 Stars S
+        10000000: 5 Stars
+        100000000: 5 Stars GL
+        1000000000: 5 Stars S

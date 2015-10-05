@@ -1,0 +1,28 @@
+
+                {% for product in category.items %}
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div >
+                                <img class="img-rounded" src="/{{product.image}}" alt="" width="120" height="121">
+                            </div>
+                            <div class="bt_ir-a-web">Ir a la web</div>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="product_name">{{product.name}}</p>
+                                    <p>by {{product.company}}</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="bt_integraciones pull-right">Ver integraciones</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="text-20">{{product.shortDescription}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                {% endfor %}
