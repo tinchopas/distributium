@@ -9,12 +9,21 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Sonata\CoreBundle\Validator\ErrorElement;
+
 
 class ItemAdmin extends Admin
 {
     private $categories;
     private $ff;
     private $formMapper;
+
+    /** @var \Symfony\Component\DependencyInjection\ContainerInterface */
+    private $container;
+
+    public function setContainer (\Symfony\Component\DependencyInjection\ContainerInterface $container) {
+        $this->container = $container;
+    }
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -54,13 +63,18 @@ class ItemAdmin extends Admin
         if ( $this->getSubject() !== null && $this->getSubject()->getCategory() !== null) {
             $myCategory = $this->getSubject()->getCategory();
             $id = $this->getSubject()->getId();
-        }
+	}
+
+	if ($myCategory == null || $myCategory->getAllowIntegration() != true) {
+		return;
+	}
 
         $em = $this->modelManager->getEntityManager('DistributiumBackendBundle:Category');
         $query = $em->createQueryBuilder('c')
             ->select('c')
             ->from('DistributiumBackendBundle:Category', 'c')
-            ->where('c.id IS NOT NULL');
+	    ->where('c.id IS NOT NULL')
+	    ->andWhere('c.allowIntegration = true');
 
         $this->categories = $query->getQuery()->getResult();
 
@@ -138,7 +152,7 @@ class ItemAdmin extends Admin
 
         $em = $this->modelManager->getEntityManager('DistributiumBackendBundle:Item');
 
-	$connectionOptions = array(
+        $connectionOptions = array(
             'required' => false, 
             'class' => 'Distributium\BackendBundle\Entity\Item', 
             'multiple'=>true, 'btn_add'=>false,
@@ -146,58 +160,53 @@ class ItemAdmin extends Admin
             'label' => false
         );
 
+
+        $categoryDisabled = false;
+        if (count($this->getSubject()->getIc()) != 0 || 
+            count($this->getSubject()->getCwi()) != 0) {
+                $categoryDisabled = true;
+            }
+
         $formMapper
             ->with('General', array('class' => 'col-md-12'))
-		->add('name', 'text', array('label' => 'Name'))
-		->add('email', 'text', array('label' => 'Email'))
-		->add('image', 'sonata_type_admin', array('required' => false))
-                ->add('company', 'entity', array('label' => 'Company', 'class' => 'Distributium\BackendBundle\Entity\Company', 'required' => false))
-                ->add('category', 'entity', array('label' => 'Category', 'class' => 'Distributium\BackendBundle\Entity\Category', 'required' => false))
-                ->add('myConnection', 'sonata_type_model', $connectionOptions)
-		->add('description', 'sonata_formatter_type', array(
-					'source_field'         => 'rawDescription',
-					'source_field_options' => array('attr' => array('class' => 'span6', 'rows' => 10)),
-					'format_field'         => 'descriptionFormatter',
-					'target_field'         => 'description',
-					'ckeditor_context'     => 'default',
-					'event_dispatcher'     => $formMapper->getFormBuilder()->getEventDispatcher(),
-                                        'required' => false
-					))
+            ->add('name', 'text', array('label' => 'Name'))
+            ->add('email', 'text', array('label' => 'Email'))
+            ->add('image', 'sonata_type_admin', array('required' => false))
+            ->add('company', 'entity', array('label' => 'Company', 'class' => 'Distributium\BackendBundle\Entity\Company', 'required' => false))
+            ->add('category', 'entity', array('label' => 'Category', 'class' => 'Distributium\BackendBundle\Entity\Category', 'required' => false))
+            ->add('myConnection', 'sonata_type_model', $connectionOptions)
+            ->add('shortDescription', 'text', array('label' => 'Short Description'))
+            ->add('description', 'sonata_formatter_type', array(
+                'source_field'         => 'rawDescription',
+                'source_field_options' => array('attr' => array('class' => 'span6', 'rows' => 10)),
+                'format_field'         => 'descriptionFormatter',
+                'target_field'         => 'description',
+                'ckeditor_context'     => 'default',
+                'event_dispatcher'     => $formMapper->getFormBuilder()->getEventDispatcher(),
+                'required' => false
+            ))
             ->end()
-		;
-	$formMapper
-		->with('Filters', array('class' => 'col-md-12'))
-                ->add('lodgingType', 'sonata_type_model', array('required' => false, 'class' => 'Distributium\BackendBundle\Entity\LodgingType', 'multiple'=>true, 'btn_add'=>false))
-		->add('lodgingSize', 'choice', array(
-                        'required' => false,
-			'multiple' => true, 
-			'sortable' => true, 
-			'choices' =>  array('1' => '1',
-                        '2-5' => '2-5', 
-			'6-10' => '6-10', 
-			'11-20' => '11-20', 
-			'21-35' => '21-35', 
-			'36-50' => '36-50', 
-			'51-100' => '51-100', 
-			'101+' => '101+'
-		)))
-		->add('lodgingCategory', 'choice', array(
-                        'required' => false,
-			'multiple' => true, 
-			'sortable' => true, 
-			'choices' =>  array('0' => 'Uncategorized', 
-			'1' => '1 Star', 
-			'2' => '2 Stars', 
-			'3' => '3 Stars', 
-			'4' => '4 Stars', 
-			'4gl' => '4 Stars GL', 
-			'4s' => '4 Stars S',
-			'5' => '5 Stars',
-			'5gl' => '5 Stars GL',
-			'5s' => '5 Stars S'
-		)))
-		->end()
-		;
+            ;
+
+        $lodgingSizesChoices = $this->container->getParameter('lodgingSize');
+        $lodgingCategoriesChoices = $this->container->getParameter('lodgingCategory');
+        $formMapper
+            ->with('Filters', array('class' => 'col-md-12'))
+            ->add('lodgingSize', 'choice', array(
+                'required' => false,
+                'multiple' => true, 
+                'sortable' => true, 
+                'choices' =>  $lodgingSizesChoices
+            ))
+            ->add('lodgingCategory', 'choice', array(
+                'required' => false,
+                'multiple' => true, 
+                'sortable' => true, 
+                'choices' => $lodgingCategoriesChoices
+            ))
+            ->add('lodgingType', 'sonata_type_model', array('required' => false, 'class' => 'Distributium\BackendBundle\Entity\LodgingType', 'multiple'=>true, 'btn_add'=>false))
+            ->end()
+            ;
     }
 
     /**
@@ -208,6 +217,16 @@ class ItemAdmin extends Admin
         $showMapper
             ->add('name')
             ->add('description')
+        ;
+    }
+
+    // add this method
+    public function validate(ErrorElement $errorElement, $object)
+    {
+        $errorElement
+            ->with('shortDescription')
+                ->assertLength(array('max' => 300))
+            ->end()
         ;
     }
 }

@@ -207,6 +207,8 @@ sonata_admin:
             - bundles/sonataformatter/vendor/ckeditor/ckeditor.js
 
             # Default admin assets
+            - bundles/sonataadmin/vendor/waypoints/lib/jquery.waypoints.min.js
+            - bundles/sonataadmin/vendor/waypoints/lib/shortcuts/sticky.js
 #            - bundles/sonatacore/vendor/jquery/dist/jquery.min.js
 #            - bundles/sonataadmin/vendor/jquery.scrollTo/jquery.scrollTo.min.js
 #            - bundles/sonatacore/vendor/moment/min/moment.min.js

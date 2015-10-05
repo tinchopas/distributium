@@ -109,6 +109,10 @@ class AppKernel extends Kernel
 
             // ldd
             new RaulFraile\Bundle\LadybugBundle\RaulFraileLadybugBundle(),
+	    new Distributium\FrontendBundle\DistributiumFrontendBundle(),
+
+	    new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

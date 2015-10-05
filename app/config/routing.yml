@@ -1,3 +1,8 @@
+distributium_frontend_product:
+    resource: "@DistributiumFrontendBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 distributium_backend:
     resource: "@DistributiumBackendBundle/Controller/"
     type:     annotation
@@ -24,5 +29,6 @@ _api:
     resource: routing_api.yml
     prefix:   /api
 
-
+fos_js_routing:
+            resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 

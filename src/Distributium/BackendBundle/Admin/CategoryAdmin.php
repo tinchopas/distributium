@@ -46,6 +46,12 @@ class CategoryAdmin extends Admin
     {
         $formMapper
             ->add('name')
+	    ->add('allowIntegration', 'choice', array(
+		    'choices'  => array(0 => 'No', 1 => 'Yes'),
+		    'expanded' => false,
+		    'placeholder' => false,
+		    'required' => false
+	    ))
             ->add('description')
             ->add('image', 'sonata_type_admin', array('required' => false))
         ;

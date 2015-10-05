@@ -29,6 +29,13 @@ class Category
     private $name;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="allow_integration", type="boolean", options={"default" = 0})
+     */
+    private $allowIntegration = 0;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=true)
@@ -43,6 +50,14 @@ class Category
      */
     private $image;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Item" , mappedBy="category")
+     * */
+    private $items;
+
+    public function __construct() {
+	    $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -75,6 +90,29 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set allowIntegration
+     *
+     * @param boolean $allowIntegration
+     * @return Category
+     */
+    public function setAllowIntegration($allowIntegration)
+    {
+        $this->allowIntegration = $allowIntegration;
+
+        return $this;
+    }
+
+    /**
+     * Get allowIntegration
+     *
+     * @return booleand
+     */
+    public function getAllowIntegration()
+    {
+        return $this->allowIntegration;
     }
 
     /**
@@ -128,5 +166,28 @@ class Category
 
     function getIdentifier() {
         return sprintf('_%s', $this->getId());
+    }
+
+    /**
+     * Set items
+     *
+     * @param string $items
+     * @return Category
+     */
+    public function setItems($items)
+    {
+        $this->items = $items;
+
+        return $this;
+    }
+
+    /**
+     * Get items
+     *
+     * @return ArrayCollection
+     */
+    public function getItems()
+    {
+        return $this->items;
     }
 }

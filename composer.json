@@ -80,7 +80,8 @@
         "stephpy/timeline-bundle": "~2.0",
 
         "incenteev/composer-parameter-handler": "~2.0",
-        "raulfraile/ladybug-bundle": "dev-master"
+        "raulfraile/ladybug-bundle": "dev-master",
+	"friendsofsymfony/jsrouting-bundle": "^1.5"
     },
 
     "require-dev": {

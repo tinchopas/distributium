@@ -9,7 +9,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Item
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Distributium\BackendBundle\Entity\ItemRepository")
+ *
  */
 class Item
 {
@@ -35,6 +36,14 @@ class Item
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="shortDescription", type="string", length=1024, nullable=true)
+     */
+    private $shortDescription;
 
     /**
      * @var string
@@ -66,11 +75,25 @@ class Item
     private $lodgingSize;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="lodging_size_mask", type="integer", nullable=true)
+     */
+    private $lodgingSizeMask;
+
+    /**
      * @var simple_array
      *
      * @ORM\Column(name="lodging_category", type="simple_array", nullable=true)
      */
     private $lodgingCategory;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="lodging_category_mask", type="integer", nullable=true)
+     */
+    private $lodgingCategoryMask;
 
     /**
      * @var Object
@@ -176,6 +199,29 @@ class Item
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set shortDescription
+     *
+     * @param string $shortDescription
+     * @return Item
+     */
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get shortDescription
+     *
+     * @return string 
+     */
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
     }
 
     /**
@@ -431,6 +477,7 @@ class Item
     public function setLodgingSize($lodgingSize)
     {
         $this->lodgingSize = $lodgingSize;
+        $this->lodgingSizeMask = bindec(array_sum($lodgingSize));
 
         return $this;
     }
@@ -446,6 +493,29 @@ class Item
     }
 
     /**
+     * Set lodgingSizeMask
+     *
+     * @param Integer $lodgingSizeMask
+     * @return Item
+     */
+    public function setLodgingSizeMask($lodgingSizeMask)
+    {
+        $this->lodgingSizeMask = $lodgingSizeMask;
+
+        return $this;
+    }
+
+    /**
+     * Get lodgingSizeMask
+     *
+     * @return Integer
+     */
+    public function getLodgingSizeMask()
+    {
+        return $this->lodgingSizeMask;
+    }
+
+    /**
      * Set lodgingCategory
      *
      * @param Array $lodgingCategory
@@ -454,6 +524,7 @@ class Item
     public function setLodgingCategory($lodgingCategory)
     {
         $this->lodgingCategory = $lodgingCategory;
+        $this->lodgingCategoryMask = bindec(array_sum($lodgingCategory));
 
         return $this;
     }
@@ -466,5 +537,28 @@ class Item
     public function getLodgingCategory()
     {
         return $this->lodgingCategory;
+    }
+
+    /**
+     * Set lodgingCategoryMask
+     *
+     * @param Integer $lodgingCategoryMask
+     * @return Item
+     */
+    public function setLodgingCategoryMask($lodgingCategoryMask)
+    {
+        $this->lodgingCategoryMask = $lodgingCategoryMask;
+
+        return $this;
+    }
+
+    /**
+     * Get lodgingCategoryMask
+     *
+     * @return Integer
+     */
+    public function getLodgingCategoryMask()
+    {
+        return $this->lodgingCategoryMask;
     }
 }
