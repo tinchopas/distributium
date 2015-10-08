@@ -1,5 +1,5 @@
 
-<input id="productServiceUrl" type="hidden" value="{{path('categoryShowProducts', { 'category': category.id })}}"></input>
+<input id="productServiceUrl" type="hidden" value="{{path('distributium_frontend_category_showproducts', { 'category': category.id })}}"></input>
 {# Bootstrap accordion #}
 <div class="row">
     <div class="col-md-12 menu_filter">
@@ -13,12 +13,12 @@
           <div class="panel panel-default">
             <div class="panel-heading menu_filter_title" role="tab" id="headingOne">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                   Nº de Habitaciones
                 </a>
               </h4>
             </div>
-            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
               <div class="panel-body lodgingSizes">
                   {% for lodgingSizeValue,lodgingSizeName in lodgingSizes%}
                       <div class="filter_option hotel group">
@@ -32,12 +32,12 @@
           <div class="panel panel-default">
             <div class="panel-heading menu_filter_title" role="tab" id="headingTwo">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                   Tipo de alojamiento
                 </a>
               </h4>
             </div>
-            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
               <div class="panel-body lodgingTypes">
                   {% for lodgingType in lodgingTypes%}
                       <div class="filter_option hotel group">
@@ -109,51 +109,3 @@
     </div>
   </div>
 </div>
-
-
-
-{#
-        <div class="row menu_filter_title">
-            <p class="text-6">FILTRAR (32)</p>
-        </div>
-        <div class="row collapsed group">
-            <span class="filter_name">Nº de Habitaciones </span><span class="small glyphicon glyphicon-plus"></span>
-        </div>
-      <div class="row expanded group">
-          <div class="selected_row group">
-              <span class="filter_name">Tipo de alojamiento </span><span class="small glyphicon glyphicon-minus"></span>
-          </div>
-          <div class="col-2 group">
-              <div class="filter_option hotel group">
-                  <span class="hotel-2">Hotel</span>
-              </div>
-              <div class="filter_option resort group">
-                  <span class="small glyphicon glyphicon-ok resort-2"></span><span>Resort</span>
-              </div>
-              <div class="filter_option apartamento group">
-                  <span class="small glyphicon glyphicon-ok resort-2"></span><span class="apartamento-2">Apartamento</span>
-              </div>
-              <div class="filter_option casa-rural group">
-                  <span class="text-11">Casa Rural</span>
-              </div>
-              <div class="filter_option camping group">
-                  <span class="small glyphicon glyphicon-ok resort-2"></span><span class="camping-2">Camping</span>
-              </div>
-              <div class="filter_option albergue group">
-                  <span class="albergue-2">Albergue</span>
-              </div>
-              <div class="filter_option posada-hosteria group">
-                  <span class="small glyphicon glyphicon-ok resort-2"></span><span class="text-12">Posada y hostería</span>
-              </div>
-          </div>
-      </div>
-      <div class="row collapsed group">
-            <span class="filter_name">Categoria</span><span class="small glyphicon glyphicon-plus"></span>
-      </div>
-      <div class="row collapsed group">
-            <span class="filter_name">Region</span><span class="small glyphicon glyphicon-plus"></span>
-      </div>
-#}
-
-
-

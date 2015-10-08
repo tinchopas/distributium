@@ -30,3 +30,9 @@ services:
         arguments: [~, Distributium\BackendBundle\Entity\LodgingType, DistributiumBackendBundle:LodgingTypeAdmin]
         tags:
             - {name: sonata.admin, manager_type: orm, group: admin, label: LodgingType}
+
+    distributium_backend.admin.lodging_feature:
+        class: Distributium\BackendBundle\Admin\LodgingFeatureAdmin
+        arguments: [~, Distributium\BackendBundle\Entity\LodgingFeature, DistributiumBackendBundle:LodgingFeatureAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: LodgingFeature }

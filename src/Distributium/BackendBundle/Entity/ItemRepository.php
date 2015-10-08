@@ -12,7 +12,7 @@ class ItemRepository extends EntityRepository
         //var_dump($lodgingTypes);exit;
 	    $qb = $this->getEntityManager()->createQueryBuilder();
 
-	    $qb->select('i.name, concat(\'/uploads/\', im.id, im.path) as image, c.name as companyName, i.shortDescription')
+	    $qb->select('i.id, i.name, concat(\'/uploads/\', im.id, im.path) as image, c.name as companyName, i.shortDescription')
 		    ->from('DistributiumBackendBundle:Item', 'i')
 		    ->leftJoin('i.image', 'im')
             ->leftJoin('i.company', 'c')

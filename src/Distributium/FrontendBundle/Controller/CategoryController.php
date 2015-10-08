@@ -47,7 +47,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * @Route("/showproducts/{category}", name="categoryShowProducts", options={"expose"=true})
+     * @Route("/showproducts/{category}", options={"expose"=true})
      * @Template()
      */
     public function showProductsAction($category, Request $request)

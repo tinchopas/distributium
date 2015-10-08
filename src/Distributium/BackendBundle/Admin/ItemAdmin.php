@@ -205,6 +205,7 @@ class ItemAdmin extends Admin
                 'choices' => $lodgingCategoriesChoices
             ))
             ->add('lodgingType', 'sonata_type_model', array('required' => false, 'class' => 'Distributium\BackendBundle\Entity\LodgingType', 'multiple'=>true, 'btn_add'=>false))
+            ->add('lodgingFeature', 'sonata_type_model', array('required' => false, 'class' => 'Distributium\BackendBundle\Entity\LodgingFeature', 'multiple'=>true, 'btn_add'=>false))
             ->end()
             ;
     }

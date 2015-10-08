@@ -161,6 +161,7 @@ sonata_admin:
                     - distributium_backend.admin.category
                     - distributium_backend.admin.company
                     - distributium_backend.admin.lodging_type
+                    - distributium_backend.admin.lodging_feature
 
     assets:
         stylesheets:

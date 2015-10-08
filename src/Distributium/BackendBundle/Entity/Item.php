@@ -138,11 +138,19 @@ class Item
      * */
     private $lodgingTypes;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="LodgingFeature", inversedBy="items")
+     * @ORM\JoinTable(name="item_lodgingfeature")
+     *
+     * */
+    private $lodgingFeatures;
+
     public function __construct() {
         $this->ic = new \Doctrine\Common\Collections\ArrayCollection();
         $this->cwi = new \Doctrine\Common\Collections\ArrayCollection();
         $this->myConnections = new \Doctrine\Common\Collections\ArrayCollection();
         $this->lodgingTypes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->lodgingFeatures = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -466,6 +474,21 @@ class Item
     public function removeLodgingType($lodgingType)
     {
         return $this->lodgingTypes->removeElement($lodgingType);
+    }
+
+    public function addLodgingFeature($lodgingFeature)
+    {
+        $this->lodgingFeatures[] = $lodgingFeature;
+    }
+    
+    public function getLodgingFeature()
+    {
+        return $this->lodgingFeatures;
+    }
+    
+    public function removeLodgingFeature($lodgingFeature)
+    {
+        return $this->lodgingFeatures->removeElement($lodgingFeature);
     }
 
     /**
