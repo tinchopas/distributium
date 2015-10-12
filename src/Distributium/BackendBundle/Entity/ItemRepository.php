@@ -12,9 +12,9 @@ class ItemRepository extends EntityRepository
         //var_dump($lodgingTypes);exit;
 	    $qb = $this->getEntityManager()->createQueryBuilder();
 
-	    $qb->select('i.id, i.name, concat(\'/uploads/\', im.id, im.path) as image, c.name as companyName, i.shortDescription')
+	    $qb->select('i.id, i.name, concat(\'/uploads/\', l.id, l.path) as logo, c.name as companyName, i.shortDescription')
 		    ->from('DistributiumBackendBundle:Item', 'i')
-		    ->leftJoin('i.image', 'im')
+		    ->leftJoin('i.logo', 'l')
             ->leftJoin('i.company', 'c')
             ->where('i.category = :category')
             ->andWhere('(:lodgingSizesMask = 0) OR (BIT_AND(i.lodgingSizeMask, :lodgingSizesMask) = :lodgingSizesMask )')

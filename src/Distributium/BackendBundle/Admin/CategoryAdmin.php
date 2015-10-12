@@ -53,7 +53,7 @@ class CategoryAdmin extends Admin
 		    'required' => false
 	    ))
             ->add('description')
-            ->add('image', 'sonata_type_admin', array('required' => false))
+            ->add('logo', 'sonata_type_admin', array('required' => false))
         ;
     }
 

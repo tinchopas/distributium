@@ -45,10 +45,10 @@ class Category
     /**
      * @var Object
      *
-     * @ORM\OneToOne(targetEntity="Image", inversedBy="category", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(name="image_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Logo", inversedBy="category", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(name="logo_id", referencedColumnName="id")
      */
-    private $image;
+    private $logo;
 
     /**
      * @ORM\OneToMany(targetEntity="Item" , mappedBy="category")
@@ -139,23 +139,23 @@ class Category
     }
 
     /**
-     * Get image.
+     * Get logo.
      *
-     * @return image.
+     * @return logo.
      */
-    public function getImage()
+    public function getLogo()
     {
-        return $this->image;
+        return $this->logo;
     }
 
     /**
-     * Set image.
+     * Set logo.
      *
-     * @param image the value to set.
+     * @param logo the value to set.
      */
-    public function setImage($image)
+    public function setLogo($logo)
     {
-        $this->image = $image;
+        $this->logo = $logo;
 
         return $this;
     }

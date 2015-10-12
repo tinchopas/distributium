@@ -10,13 +10,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 
 /**
- * Image
+ * Logo
  *
  * @ORM\Table()
  * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity
  */
-class Image
+class Logo
 {
     /**
      * @var integer
@@ -42,15 +42,28 @@ class Image
     private $path;
 
     /**
+     * @var datetime
+     *
+     * @ORM\Column(name="updated", type="datetime", nullable=true)
+     */
+    private $updated;
+
+    /**
      * @Assert\File(maxSize="6000000")
      */
     private $file;
 
     /**
-     * @var Object
+     * @var Category
      *
-     * @ORM\ManyToOne(targetEntity="Item")
-     * @ORM\JoinColumn(name="item_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Category", mappedBy="logo")
+     */
+    private $category;
+
+    /**
+     * @var Item
+     *
+     * @ORM\OneToOne(targetEntity="Item", mappedBy="logo")
      */
     private $item;
 
@@ -69,7 +82,7 @@ class Image
      * Set name
      *
      * @param string $name
-     * @return Image
+     * @return Logo
      */
     public function setName($name)
     {
@@ -92,7 +105,7 @@ class Image
      * Set path
      *
      * @param string $path
-     * @return Image
+     * @return Logo
      */
     public function setPath($path)
     {
@@ -115,7 +128,7 @@ class Image
      * Set category
      *
      * @param Category $category
-     * @return Image
+     * @return Logo
      */
     public function setCategory($category)
     {
@@ -154,6 +167,26 @@ class Image
         $this->item = $item;
     }
 
+    /**
+     * Get updated.
+     *
+     * @return updated.
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set updated.
+     *
+     * @param updated the value to set.
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    }
+
 
     /**
      * Sets file.
@@ -164,7 +197,8 @@ class Image
     {
         $this->file = $file;
         // check if we have an old image path
-        if (is_file($this->getAbsolutePath())) {
+        //if (is_file($this->getAbsolutePath())) {
+        if (isset($this->path)) {
             // store the old name to delete after the update
             $this->temp = $this->getAbsolutePath();
         } else {
@@ -223,7 +257,7 @@ class Image
     public function preUpload()
     {
         if (null !== $this->getFile()) {
-            $this->path = $this->id.'.'.$this->getFile()->guessExtension();
+            $this->path = '.'.$this->getFile()->guessExtension();
         }
     }
 
@@ -276,5 +310,13 @@ class Image
     public function storeFilenameForRemove()
     {
         $this->temp = $this->getAbsolutePath();
+    }
+
+    /**
+     * Updates the hash value to force the preUpdate and postUpdate events to fire
+     */
+    public function refreshUpdated()
+    {
+        $this->setUpdated(new \DateTime());
     }
 }

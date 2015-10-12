@@ -36,3 +36,9 @@ services:
         arguments: [~, Distributium\BackendBundle\Entity\LodgingFeature, DistributiumBackendBundle:LodgingFeatureAdmin]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: LodgingFeature }
+
+    distributium_backend.admin.logo:
+        class: Distributium\BackendBundle\Admin\LogoAdmin
+        arguments: [~, Distributium\BackendBundle\Entity\Logo, DistributiumBackendBundle:LogoAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Logo }

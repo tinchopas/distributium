@@ -14,7 +14,7 @@ use Sonata\CoreBundle\Validator\ErrorElement;
 
 class ItemAdmin extends Admin
 {
-    private $categories;
+    private $categories = array();
     private $ff;
     private $formMapper;
 
@@ -77,10 +77,12 @@ class ItemAdmin extends Admin
 	    ->andWhere('c.allowIntegration = true');
 
         $this->categories = $query->getQuery()->getResult();
+        if ($this->categories == null) {
+            $this->categories = array();
+        }
 
         if ($myCategory != null) {
-	    foreach ($this->categories as $category) {
-
+            foreach ($this->categories as $category) {
                 if($myCategory->getId() == $category->getId()) {
                     continue;
                 }
@@ -103,7 +105,7 @@ class ItemAdmin extends Admin
                 $queryData->setParameter('category', $category);
                 $queryData->setParameter('id', $id);
 
-	        $options = array(
+                $options = array(
                     'mapped'=>false,
                     'auto_initialize' => false,
                     'required' => false,
@@ -114,7 +116,7 @@ class ItemAdmin extends Admin
                     'label'=> $category->getName()
                 );
                 $event->getForm()->add($this->ff->createNamed($category->getIdentifier(), 'entity', null, $options));
-	    }
+            }
         }
     }
 
@@ -171,7 +173,7 @@ class ItemAdmin extends Admin
             ->with('General', array('class' => 'col-md-12'))
             ->add('name', 'text', array('label' => 'Name'))
             ->add('email', 'text', array('label' => 'Email'))
-            ->add('image', 'sonata_type_admin', array('required' => false))
+            ->add('logo', 'sonata_type_admin', array('required' => false))
             ->add('company', 'entity', array('label' => 'Company', 'class' => 'Distributium\BackendBundle\Entity\Company', 'required' => false))
             ->add('category', 'entity', array('label' => 'Category', 'class' => 'Distributium\BackendBundle\Entity\Category', 'required' => false))
             ->add('myConnection', 'sonata_type_model', $connectionOptions)
@@ -230,4 +232,47 @@ class ItemAdmin extends Admin
             ->end()
         ;
     }
+/*
+    public function preUpdate($item) {
+        $this->getConfigurationPool()->getAdminByAdminCode('distributium_backend.admin.logo')->preUpdate($item->getLogo()); 
+    }
+*/
+    public function prePersist($page)
+    {
+        $this->manageEmbeddedImageAdmins($page);
+    }
+
+    public function preUpdate($page)
+    {
+        $this->manageEmbeddedImageAdmins($page);
+    }
+
+    private function manageEmbeddedImageAdmins($page)
+    {
+        // Cycle through each field
+        foreach ($this->getFormFieldDescriptions() as $fieldName => $fieldDescription) {
+            // detect embedded Admins that manage Images
+            if ($fieldDescription->getType() === 'sonata_type_admin' &&
+                ($associationMapping = $fieldDescription->getAssociationMapping()) &&
+                $associationMapping['targetEntity'] === 'Distributium\BackendBundle\Entity\Logo'
+            ) {
+                $getter = 'get'.$fieldName;
+                $setter = 'set'.$fieldName;
+
+                /** @var Image $image */
+                $image = $page->$getter();
+
+                if ($image) {
+                    if ($image->getFile()) {
+                        // update the Image to trigger file management
+                        $image->refreshUpdated();
+                    } elseif (!$image->getFile() && !$image->getFilename()) {
+                        // prevent Sf/Sonata trying to create and persist an empty Image
+                        $page->$setter(null);
+                    }
+                }
+            }
+        }
+    }
+
 }

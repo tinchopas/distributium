@@ -43,7 +43,7 @@ function refreshProductList()
             for(var i=0;i<len;i++){
                 productEntry = dataWeGotViaJsonp[i];
                 var productElement = $('#productTemplate').clone();
-                productElement.find('.mainLogo').attr('src', productEntry['image']);
+                productElement.find('.mainLogo').attr('src', productEntry['logo']);
                 productElement.find('.product_name')
                     .html(productEntry['name'])
                     .attr('href', Routing.generate('distributium_frontend_product_show', {id : productEntry['id']}));
