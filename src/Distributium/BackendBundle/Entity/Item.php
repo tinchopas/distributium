@@ -5,6 +5,8 @@ namespace Distributium\BackendBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Sonata\MediaBundle\Model\MediaInterface;
+
 /**
  * Item
  *
@@ -117,6 +119,17 @@ class Item
     private $images;
 
     /**
+     * @var \AppBundle\Entity\Media\Media
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Media\Media", cascade={"persist"}, fetch="LAZY")
+     */
+    protected $media;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ItemHasImage" , mappedBy="item" , cascade={"all"}, orphanRemoval=true)
+     * */
+    protected $itemHasImage;
+
+    /**
      * @ORM\OneToMany(targetEntity="ItemConnection" , mappedBy="item" , cascade={"all"}, orphanRemoval=true)
      * */
     private $ic;
@@ -127,6 +140,7 @@ class Item
     private $cwi;
 
     private $myConnections;
+    private $myMedias;
 
     /**
      * @var Object
@@ -151,6 +165,8 @@ class Item
     private $lodgingFeatures;
 
     public function __construct() {
+        $this->itemHasImage = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->medias = new \Doctrine\Common\Collections\ArrayCollection();
         $this->ic = new \Doctrine\Common\Collections\ArrayCollection();
         $this->cwi = new \Doctrine\Common\Collections\ArrayCollection();
         $this->myConnections = new \Doctrine\Common\Collections\ArrayCollection();
@@ -374,10 +390,55 @@ class Item
         return $this;
     }
 
+    /**
+     * @return \AppBundle\Entity\Media\Media
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param \AppBundle\Entity\Media\Media $media
+     */
+    public function setMedia(MediaInterface $media = null)
+    {
+        $this->media = $media;
+    }
+
     public function __toString()
     {
         return $this->getName();
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setItemHasImage($itemHasImages)
+    {
+        $this->itemHasImage = new ArrayCollection();
+        foreach ($itemHasImages as $itemHasImage) {
+            $this->addItemHasImage($itemHasImage);
+        }
+    }
+
+    public function addItemHasImage($itemHasImage)
+    {
+        $itemHasImage->setItem($this);
+
+        $this->itemHasImage[] = $itemHasImage;
+    }
+    
+    public function getItemHasImage()
+    {
+        return $this->itemHasImage;
+    }
+    
+    public function removeItemHasImage($itemHasImage)
+    {
+        return $this->itemHasImage->removeElement($itemHasImage);
+    }
+
 
     // Important 
     public function getMyConnection()

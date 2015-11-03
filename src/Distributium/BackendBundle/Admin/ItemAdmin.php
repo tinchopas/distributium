@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormEvents;
 use Sonata\CoreBundle\Validator\ErrorElement;
 
 
+
 class ItemAdmin extends Admin
 {
     private $categories = array();
@@ -174,6 +175,42 @@ class ItemAdmin extends Admin
             ->add('name', 'text', array('label' => 'Name'))
             ->add('email', 'text', array('label' => 'Email'))
             ->add('logo', 'sonata_type_admin', array('required' => false))
+            /*
+            ->add('media', 'sonata_media_type', array(
+                'provider' => 'sonata.media.provider.image',
+                'context'  => 'default'
+            ))
+             */
+            ->add('itemHasImage', 'sonata_type_collection', array(
+                'cascade_validation' => false,
+                'required' => false,
+                'by_reference' => false,
+                'btn_catalogue' => true,
+                 
+               
+
+                'type_options' => array(
+                    // Prevents the "Delete" option from being displayed
+                    'delete' => true,
+                    'delete_options' => array(
+                        // You may otherwise choose to put the field but hide it
+                        'type'         => 'checkbox',
+                        // In that case, you need to fill in the options as well
+                        'type_options' => array(
+                            'mapped'   => false,
+                            'required' => false,
+                        )
+                    )
+                )
+
+
+ 
+            ), array(
+                'edit' => 'inline',
+                'inline' => 'table',
+                'link_parameters' => array('context' => 'widget'),
+                'admin_code' => 'distributium_backend.admin.item_has_image' 
+            ))
             ->add('company', 'entity', array('label' => 'Company', 'class' => 'Distributium\BackendBundle\Entity\Company', 'required' => false))
             ->add('category', 'entity', array('label' => 'Category', 'class' => 'Distributium\BackendBundle\Entity\Category', 'required' => false))
             ->add('myConnection', 'sonata_type_model', $connectionOptions)
@@ -223,7 +260,6 @@ class ItemAdmin extends Admin
         ;
     }
 
-    // add this method
     public function validate(ErrorElement $errorElement, $object)
     {
         $errorElement
@@ -232,19 +268,19 @@ class ItemAdmin extends Admin
             ->end()
         ;
     }
-/*
-    public function preUpdate($item) {
-        $this->getConfigurationPool()->getAdminByAdminCode('distributium_backend.admin.logo')->preUpdate($item->getLogo()); 
-    }
-*/
+
     public function prePersist($page)
     {
         $this->manageEmbeddedImageAdmins($page);
+
     }
 
     public function preUpdate($page)
     {
         $this->manageEmbeddedImageAdmins($page);
+        foreach ($page->getItemHasImage() as $itemHasImage) {
+            $itemHasImage->setItem($page);
+        }
     }
 
     private function manageEmbeddedImageAdmins($page)
@@ -266,7 +302,7 @@ class ItemAdmin extends Admin
                     if ($image->getFile()) {
                         // update the Image to trigger file management
                         $image->refreshUpdated();
-                    } elseif (!$image->getFile() && !$image->getFilename()) {
+                    } elseif (!$image->getFile() && !$image->getWebPath()) {
                         // prevent Sf/Sonata trying to create and persist an empty Image
                         $page->$setter(null);
                     }
@@ -275,4 +311,11 @@ class ItemAdmin extends Admin
         }
     }
 
+    public function getFormTheme()
+    {
+        return array_merge(
+            parent::getFormTheme(),
+            array('DistributiumBackendBundle:Form:admin.theme.html.twig')
+        );
+    }
 }

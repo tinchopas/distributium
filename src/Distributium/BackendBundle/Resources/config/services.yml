@@ -42,3 +42,9 @@ services:
         arguments: [~, Distributium\BackendBundle\Entity\Logo, DistributiumBackendBundle:LogoAdmin]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Logo }
+
+    distributium_backend.admin.item_has_image:
+        class: Distributium\BackendBundle\Admin\ItemHasImageAdmin
+        arguments: [~, Distributium\BackendBundle\Entity\ItemHasImage, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: ItemMedia }
