@@ -1,3 +1,7 @@
+body {
+    color: #224e6b;
+    font-size: 17px;
+}
 .sonata-bc .container {
 	max-width: 1170px;
 }
@@ -428,3 +432,50 @@
     text-align: center;
 }
 /* End Category show*/
+
+/* Begin Product show*/
+.product_page .row {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.product_page .product_intro .category_name {
+    color: #318cb8;
+    font-size: 20px;
+}
+.product_page .product_intro .product_name {
+    font-size: 35px;
+}
+.product_other-products .product-category {
+    color: #318cb8;
+    margin-bottom: 10px;
+}
+.product_other-products .product-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.product_page .section-title {
+    color: #318cb8;
+    font-size: 22px;
+    font-weight: bold;
+}
+.products_integrated .integrated_title{
+    font-weight: bold;
+    font-size: 18px;
+}
+.product_page .products_integrated {
+    background: #f4f4f4;
+    padding: 26px 13px;
+}
+.products_integrated .integrated_category {
+    margin: 15px 0 0;
+    color: #318cb8;
+}
+.products_integrated .integrated_name {
+    margin: 15px 0 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+.products_integrated .bt_integraciones {
+    margin: 15px 0 0;
+}
+/* End Product show*/

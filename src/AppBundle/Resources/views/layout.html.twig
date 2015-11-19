@@ -22,10 +22,13 @@ file that was distributed with this source code.
                     {% if sonata_seo_context is not defined %}
                         {% set sonata_seo_context = 'homepage' %}
                     {% endif %}
+                    <div class="col-md-offset-1">
                     {{ sonata_block_render_event('breadcrumb', { 'context': sonata_seo_context, 'current_uri': app.request.requestUri }) }}
+                    </div>
                 </div>
             {% endblock %}
 
+                    {#{{ sonata_page_breadcrumb(page, {separator: '>>', 'options.container_attr':{'class':'breadcrumb'}}) }}#}
             {% if page is defined %}
                 <div class="row">
                     {% if page.name != 'global'%}
