@@ -1,0 +1,25 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}DistributiumFrontendBundle:Quiz:home{% endblock %}
+
+
+
+
+
+
+{% block body %}
+
+<div class="row quiz_page">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="row section-title text-center">
+            {{ sonata_page_render_container('integration_top') }}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+

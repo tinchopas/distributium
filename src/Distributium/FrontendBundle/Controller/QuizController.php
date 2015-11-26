@@ -6,22 +6,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Distributium\BackendBundle\Entity\Item;
-
 /**
- * @Route("/product")
+ * @Route("/quiz")
  * @Template()
  */
-class ProductController extends Controller
+class QuizController extends Controller
 {
     /**
-     * @Route("/show/{id}", options={"expose"=true})
+     * @Route("/home", options={"expose"=true})
      * @Template()
      */
-    public function showAction(Item $item)
+    public function homeAction()
     {
 	    return array(
-            'item' => $item
 	    );    
     }
 }
