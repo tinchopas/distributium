@@ -29,6 +29,10 @@ _api:
     resource: routing_api.yml
     prefix:   /api
 
+_distributium_api:
+    resource: routing_distributium_api.yml
+    prefix:   /distributium_api
+
 fos_js_routing:
             resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 

@@ -44,7 +44,6 @@ class ItemAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
-            ->add('description')
             ->add('category')
             ->add('slug')
             ->add('_action', 'actions', array(

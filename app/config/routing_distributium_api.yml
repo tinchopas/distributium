@@ -1,0 +1,4 @@
+sonata_api_distributium:
+    type:         rest
+    prefix:       /distributium
+    resource:     "@DistributiumFrontendBundle/Resources/config/routing/api.xml"

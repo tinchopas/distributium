@@ -19,3 +19,10 @@ parameters:
         10000000: 5 Stars
         100000000: 5 Stars GL
         1000000000: 5 Stars S
+    lodgingRegion:
+        1: Europa
+        10: America
+        100: Africa
+        1000: Asia
+        10000: Oceania
+

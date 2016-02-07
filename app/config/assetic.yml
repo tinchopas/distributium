@@ -154,3 +154,6 @@ assetic:
         distributium_frontend_js:
             inputs:
                 - %kernel.root_dir%/../web/bundles/distributiumfrontend/js/productList.js
+        distributium_quiz_js:
+            inputs:
+                - %kernel.root_dir%/../web/bundles/distributiumfrontend/js/quiz.js

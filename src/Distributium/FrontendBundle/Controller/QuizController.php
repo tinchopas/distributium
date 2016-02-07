@@ -18,7 +18,13 @@ class QuizController extends Controller
      */
     public function homeAction()
     {
+        $lodgingTypes = $this->getDoctrine()->getRepository('DistributiumBackendBundle:LodgingType')->findAll();
+
 	    return array(
+            'lodgingSizes' => $this->container->getParameter('lodgingSize'),
+            'lodgingCategories' => $this->container->getParameter('lodgingCategory'),
+            'lodgingRegions' => $this->container->getParameter('lodgingRegion'),
+            'lodgingTypes' => $lodgingTypes
 	    );    
     }
 }

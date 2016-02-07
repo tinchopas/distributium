@@ -4,3 +4,6 @@ services:
         arguments: [ "distributium.frontend.block.productlist", @templating ]
         tags:
             - { name: sonata.block }
+    distributium.product.controller.api.list:
+        class: Distributium\FrontendBundle\Controller\Api\ProductController
+        type: rest

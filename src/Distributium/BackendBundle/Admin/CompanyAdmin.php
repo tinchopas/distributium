@@ -35,15 +35,8 @@ class CompanyAdmin extends Admin
     {
         $listMapper
             ->add('name')
-            ->add('address')
             ->add('website')
             ->add('email')
-            ->add('telephone')
-            ->add('shortDescription')
-            ->add('description')
-            ->add('city')
-            ->add('state')
-            ->add('country')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),

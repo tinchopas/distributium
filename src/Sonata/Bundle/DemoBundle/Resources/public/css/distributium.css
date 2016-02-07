@@ -479,3 +479,29 @@ body {
     margin: 15px 0 0;
 }
 /* End Product show*/
+
+/* Begin Quiz home*/
+.quiz_home .section-title {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 10px 0 40px;
+}
+.quiz_home .services-integration {
+    padding: 67px 0 69px;
+}
+.quiz_home .lodging-type {
+    padding: 67px 0 69px;
+}
+.quiz_home .interested-tools {
+    padding: 67px 0 69px;
+}
+.quiz_home .interested-tools .categories .categoryClicked {
+    background-color: #318cb8;
+    min-height: 50px;
+}
+.quiz_home .section-form2 .categories {
+    background: #224e6b;
+    color: #ffffff;
+    min-height: 50px;
+}
+/* End Quiz home*/
