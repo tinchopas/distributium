@@ -3,6 +3,8 @@ $(document).ready(function(){
     //refreshProductList();
 });
 
+
+
 $('.categories div').click(function(){
 
     $('.categories div').removeClass('categoryClicked');
@@ -11,17 +13,36 @@ $('.categories div').click(function(){
     updateProductList($('.categories .categoryClicked').attr('rel'));
 
     $( "#product-options .option" ).bind( "click", function() {
+        input = $(this).find('input');
+        quizHome[input.attr('name')] = input.attr('value');
+        console.log(quizHome);
         if ($(this).hasClass('selector')) {
 
             $('#product-options div').removeClass('hidden');
-            //console.log(productList);
         }
         if ($(this).hasClass('next')) {
+            delete quizHome["c_op_val_" + $('.categories .categoryClicked').attr('id')];
+            console.log(quizHome);
             $('#selectContainer').addClass('hidden');
+            nextStep();
         }
     }); 
 });
 
+function nextStep() {
+    if ($('.categories .categoryClicked').is(':last-child')) {
+        alert('Searching results');
+        console.log('LAST CHILD');
+        return;
+    }
+    $('.categories .categoryClicked').next().click();
+}
+
+function registerSelectedProduct() {
+    quizHome[$(this).attr('name')] = $(this).val();
+    console.log(quizHome);
+    nextStep();
+};
 
 function updateProductList(url)
 {
@@ -50,13 +71,16 @@ function updateProductList(url)
             selectContainer.addClass('hidden');
 
             select = $('<select>');
+            select.attr("name", "c_op_val_" + $('.categories .categoryClicked').attr('id'));
             select.addClass("form-control");
+
+            select.bind("click", registerSelectedProduct);
             var len = dataWeGotViaJsonp.length;
 
             for(var i=0;i<len;i++){
                 productEntry = dataWeGotViaJsonp[i];
                 option = $('<option>');
-                option.attr('name', productEntry['id']);
+                option.attr('value', productEntry['id']);
                 option.text(productEntry['name']);
                 select.append(option);
             }
@@ -81,7 +105,7 @@ function getProductOptions(id) {
 
     rowInput = $('<input>');
     rowInput.attr('type', 'radio');
-    rowInput.attr('name', 'tools_' + names[id]);
+    rowInput.attr('name', 'c_op_' + id);
 
     row1 = $('<div>');
     row1.addClass('row option selector');

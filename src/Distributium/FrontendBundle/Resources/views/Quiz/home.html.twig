@@ -68,6 +68,9 @@
 
 {% endblock %}
 {% block javascripts %}
+    <script type="text/javascript">
+        var quizHome = {};
+    </script>
     {{ parent() }}
     <script src="{{ asset('assetic/distributium_quiz_js.js') }}" type="text/javascript"></script>
 {% endblock %}

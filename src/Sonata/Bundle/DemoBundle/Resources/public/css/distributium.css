@@ -503,5 +503,7 @@ body {
     background: #224e6b;
     color: #ffffff;
     min-height: 50px;
+    cursor: pointer;
 }
+
 /* End Quiz home*/
