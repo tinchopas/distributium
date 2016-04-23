@@ -14,36 +14,39 @@
         <div class="row text-center services-integration">
             {{ sonata_page_render_container('integration_top') }}
         </div>
+
+        <form id="submit-search" class="text-left"  method="post" action="{{path('distributium_frontend_quiz_results')}}">
+
         <div class="row section-form1 text-center lodging-type">
             <div class="row">
                 <p class="glyphicon glyphicon-link section-title">¿Que tipo de alojamiento gestionas?</p>
             </div>
             <div class="row">
                 <div class="col-md-2 col-md-offset-2">
-                    <select class="form-control">
+                    <select class="form-control" name="lodgingType">
                         {% for lodgingType in lodgingTypes%}
-                            <option id="lt_{{lodgingType.id}}" name="{{lodgingType.id}}" >{{lodgingType.name}}</option>
+                            <option id="lt_{{lodgingType.id}}" value="{{lodgingType.id}}" >{{lodgingType.name}}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <select class="form-control">
+                    <select class="form-control" name="lodgingSize[]">
                         {% for lodgingSizeValue,lodgingSizeName in lodgingSizes%}
-                            <option id="ls_{{lodgingSizeName}}" name="{{lodgingSizeValue}}" >{{lodgingSizeName}}</option>
+                            <option id="ls_{{lodgingSizeName}}" value="{{lodgingSizeValue}}" >{{lodgingSizeName}}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <select class="form-control">
+                    <select class="form-control" name="lodgingCategory[]">
                         {% for lodgingCategoryValue,lodgingCategoryName in lodgingCategories%}
-                            <option id="lt_{{lodgingCategoryName}}" name="{{lodgingCategoryValue}}" >{{lodgingCategoryName}}</option>
+                            <option id="lt_{{lodgingCategoryName}}" value="{{lodgingCategoryValue}}" >{{lodgingCategoryName}}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <select class="form-control">
+                    <select class="form-control" name="lodgingRegion">
                         {% for lodgingRegionValue,lodgingRegionName in lodgingRegions%}
-                            <option id="lt_{{lodgingRegionName}}" name="{{lodgingRegionValue}}" >{{lodgingRegionName}}</option>
+                            <option id="lt_{{lodgingRegionName}}" value="{{lodgingRegionValue}}" >{{lodgingRegionName}}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -63,6 +66,59 @@
             <div id="product-options" class="row text-left"></div>
             </div>
         </div>
+        <div class="row section-form2 text-center search">
+            <div class="row">
+                <p class="glyphicon glyphicon-link section-title">Your selection</p>
+            </div>
+            <div class="row text-left customer-selection">
+            </div>
+
+
+
+
+                <div class="row hidden">
+                    <input type=text name="c_op_3"/>
+                </div>
+                <div class="row hidden">
+                    <input type=text name="c_op_1"/>
+                </div>
+                <div class="row hidden">
+                    <input type=text name="c_op_2"/>
+                </div>
+                <div class="row hidden">
+                    <input type=text name="c_op_4"/>
+                </div>
+
+                <div class="row">
+                    <label>Property Management Sys: </label>
+                    <label id="c_op_val_3"></label>
+                    <input type=text class="hidden" name="c_op_val_3"/>
+                </div>
+                <div class="row">
+                    <label>Channel Manager: </label>
+                    <label id="c_op_val_1"></label>
+                    <input type=text class="hidden" name="c_op_val_1"/>
+                </div>
+                <div class="row">
+                    <label>Internet Booking Engine: </label>
+                    <label id="c_op_val_2"></label>
+                    <input type=text class="hidden" name="c_op_val_2"/>
+                </div>
+                <div class="row">
+                    <label>Revenue Management Sys: </label>
+                    <label id="c_op_val_4"></label>
+                    <input type=text class="hidden" name="c_op_val_4"/>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Search Results" class="btn btn-primary"/>
+                </div>
+
+
+        </div>
+        </form>
+
+
+
     </div>
 </div>
 

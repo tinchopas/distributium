@@ -3,7 +3,13 @@ $(document).ready(function(){
     //refreshProductList();
 });
 
+$("#quiz_search").click(function(){
+    alert($(this).attr("rel"));
+    $.redirectPost($(this).attr("rel"), {x: 'example', y: 'abc'});
 
+    //$().redirect($(this).attr("rel"), quizHome);
+
+});
 
 $('.categories div').click(function(){
 
@@ -14,6 +20,9 @@ $('.categories div').click(function(){
 
     $( "#product-options .option" ).bind( "click", function() {
         input = $(this).find('input');
+
+        $("input[type='text'][name="+input.attr('name')+"]").val(input.val());
+
         quizHome[input.attr('name')] = input.attr('value');
         console.log(quizHome);
         if ($(this).hasClass('selector')) {
@@ -22,9 +31,10 @@ $('.categories div').click(function(){
         }
         if ($(this).hasClass('next')) {
             delete quizHome["c_op_val_" + $('.categories .categoryClicked').attr('id')];
+            $("input[type='text'][name=c_op_val_"+$('.categories .categoryClicked').attr('id')+"]").val('');
             console.log(quizHome);
             $('#selectContainer').addClass('hidden');
-            nextStep();
+            //nextStep();
         }
     }); 
 });
@@ -38,10 +48,22 @@ function nextStep() {
     $('.categories .categoryClicked').next().click();
 }
 
+function refreshCustomerSelection() {
+    item = $('<div>');
+    $.each(quizHome, function( index, value ) {
+        item.append(index + ': ' + value);
+    });
+    $('.customer-selection').append(item);
+}
+
 function registerSelectedProduct() {
+    console.log($(this).find("option:selected").text());
+    $("label[id="+$(this).attr('name')+"]").text($(this).find("option:selected").text());
+    $("input[type='text'][name="+$(this).attr('name')+"]").val($(this).val());
     quizHome[$(this).attr('name')] = $(this).val();
+    //refreshCustomerSelection();
     console.log(quizHome);
-    nextStep();
+    //nextStep();
 };
 
 function updateProductList(url)
