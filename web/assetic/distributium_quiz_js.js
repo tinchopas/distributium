@@ -34,19 +34,10 @@ $('.categories div').click(function(){
             $("input[type='text'][name=c_op_val_"+$('.categories .categoryClicked').attr('id')+"]").val('');
             console.log(quizHome);
             $('#selectContainer').addClass('hidden');
-            //nextStep();
         }
     }); 
 });
 
-function nextStep() {
-    if ($('.categories .categoryClicked').is(':last-child')) {
-        alert('Searching results');
-        console.log('LAST CHILD');
-        return;
-    }
-    $('.categories .categoryClicked').next().click();
-}
 
 function refreshCustomerSelection() {
     item = $('<div>');
@@ -149,18 +140,10 @@ function getProductOptions(id) {
     input.attr('value', 3);
     row3.append(input);
     row3.append('No tengo ' + names[id] + ' y necesito uno');
-    
-    row4 = $('<div>');
-    row4.addClass('row option next');
-    input = rowInput.clone();
-    input.attr('value', 4);
-    row4.append(input);
-    row4.append('No tengo ' + names[id] + ' y no necesito tenerlo');
 
     productOptions.append(row1);
     productOptions.append(row2);
     productOptions.append(row3);
-    productOptions.append(row4);
 
     return productOptions;
 }

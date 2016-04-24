@@ -16,10 +16,10 @@
         </div>
         <div class="row section-form2 text-center interested-tools">
             <div class="row categories">
-                <div id="3"  class="col-md-2 col-md-offset-2">Property Management Sys</div>
+                <div id="4"  class="col-md-2 col-md-offset-2">Revenue Management Sys</div>
+                <div id="3"  class="col-md-2">Property Management Sys</div>
                 <div id="1"  class="col-md-2">Channel Manager</div>
                 <div id="2"  class="col-md-2">Internet Booking Engine</div>
-                <div id="4"  class="col-md-2">Revenue Management Sys</div>
             </div>
             <br/>
             <br/>
@@ -27,10 +27,10 @@
                 <div class="col-md-12>
                   {% for result in results %}
                     <div class="row">
-                      <div class="col-md-2 col-md-offset-2">{{result.pms_name}}</div>
+                      <div class="col-md-2 col-md-offset-2">{{result.rms_name}}</div>
+                      <div class="col-md-2">{{result.pms_name}}</div>
                       <div class="col-md-2">{{result.cm_name}}</div>
                       <div class="col-md-2">{{result.ibe_name}}</div>
-                      <div class="col-md-2">{{result.rms_name}}</div>
                     </div>
                   {% endfor %}
                 </div>

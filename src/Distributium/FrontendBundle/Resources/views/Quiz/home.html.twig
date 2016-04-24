@@ -57,10 +57,10 @@
                 <p class="glyphicon glyphicon-link section-title">¿Qué herramientas te interesan?</p>
             </div>
             <div class="row categories">
-                <div id="3" rel="{{path('distributium_frontend_category_showproducts', { 'category': 3 })}}" class="col-md-2 col-md-offset-2">Property Management Sys</div>
+                <div id="4" rel="{{path('distributium_frontend_category_showproducts', { 'category': 4 })}}" class="col-md-2 col-md-offset-2">Revenue Management Sys</div>
+                <div id="3" rel="{{path('distributium_frontend_category_showproducts', { 'category': 3 })}}" class="col-md-2">Property Management Sys</div>
                 <div id="1" rel="{{path('distributium_frontend_category_showproducts', { 'category': 1 })}}" class="col-md-2">Channel Manager</div>
                 <div id="2" rel="{{path('distributium_frontend_category_showproducts', { 'category': 2 })}}" class="col-md-2">Internet Booking Engine</div>
-                <div id="4" rel="{{path('distributium_frontend_category_showproducts', { 'category': 4 })}}" class="col-md-2">Revenue Management Sys</div>
             </div>
             <div class="row">
             <div id="product-options" class="row text-left"></div>
@@ -72,9 +72,6 @@
             </div>
             <div class="row text-left customer-selection">
             </div>
-
-
-
 
                 <div class="row hidden">
                     <input type=text name="c_op_3"/>
@@ -90,6 +87,11 @@
                 </div>
 
                 <div class="row">
+                    <label>Revenue Management Sys: </label>
+                    <label id="c_op_val_4"></label>
+                    <input type=text class="hidden" name="c_op_val_4"/>
+                </div>
+                <div class="row">
                     <label>Property Management Sys: </label>
                     <label id="c_op_val_3"></label>
                     <input type=text class="hidden" name="c_op_val_3"/>
@@ -103,11 +105,6 @@
                     <label>Internet Booking Engine: </label>
                     <label id="c_op_val_2"></label>
                     <input type=text class="hidden" name="c_op_val_2"/>
-                </div>
-                <div class="row">
-                    <label>Revenue Management Sys: </label>
-                    <label id="c_op_val_4"></label>
-                    <input type=text class="hidden" name="c_op_val_4"/>
                 </div>
                 <div class="row">
                     <input type="submit" value="Search Results" class="btn btn-primary"/>
