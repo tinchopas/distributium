@@ -128,6 +128,9 @@ assetic:
                 - cssrewrite
                 - yui_css
 
+        sonata_front_fonts:
+            inputs:
+                - %kernel.root_dir%/../app/Resources/public/fonts/Raleway-Regular.ttf
         sonata_front_js:
             inputs:
                 - %kernel.root_dir%/../web/bundles/sonatacore/vendor/jquery/dist/jquery.js
