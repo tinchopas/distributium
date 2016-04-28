@@ -1,6 +1,7 @@
 body {
     color: #224e6b;
     font-size: 17px;
+    font-family: sonata_front_fonts;
 }
 .btn {
     border-radius: 2.25rem;

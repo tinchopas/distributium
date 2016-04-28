@@ -20,6 +20,12 @@ file that was distributed with this source code.
             {{ sonata_seo_metadatas() }}
 
             {% block sonata_page_stylesheets %}
+                <style type="text/css">
+                    @font-face {
+                        font-family: sonata_front_fonts;
+                        src: url({{ asset('assetic/sonata_front_fonts.ttf') }});
+                    }
+                </style>
                 {% block page_stylesheets %} {# Deprecated block #}
                     {% for stylesheet in sonata_page.assets.stylesheets %}
                         <link rel="stylesheet" href="{{ asset(stylesheet) }}" media="all">
