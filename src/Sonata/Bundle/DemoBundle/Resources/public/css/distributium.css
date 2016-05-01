@@ -103,6 +103,11 @@ body {
 	zoom: 1;
 }
 
+.sonata-bc .home-tools .tools-group button {
+    border: 2px solid #fff;
+    background-color: #318cb8;
+}
+
 .btctg {
     min-height: 46px;
     width: 231px;
