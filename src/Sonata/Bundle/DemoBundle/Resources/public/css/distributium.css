@@ -3,6 +3,37 @@ body {
     font-size: 17px;
     font-family: sonata_front_fonts;
 }
+.breadcrumb {
+    padding: 8px 15px 8px 8.33%;
+}
+
+/*Checkbox*/
+/*
+input[type=checkbox] {
+    display: none;
+}
+.checkbox label:before {
+    border-radius: 3px;
+}
+input[type=checkbox]:not(checked) + label:before {
+    content: " ";
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    font-size: 15px;
+    color: #f3f3f3;
+    text-align: center;
+    line-height: 15px;
+}
+input[type=checkbox]:checked + label:before {
+    content: "\2713";
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    font-size: 15px;
+    color: #f3f3f3;
+    text-align: center;
+    line-height: 15px;
+}
+*/
+/*End Checkbox*/
+
 .btn {
     border-radius: 2.25rem;
 }
@@ -11,10 +42,14 @@ body {
 }
 
 .sonata-bc .home-tools {
-	background-color: #318cb8;
+	background-color: #337ab8;
 	padding: 66px 0 67px;
 	color: #fff;
 	margin: 0px;
+}
+
+.page-header {
+    border: none;
 }
 
 .page-header .text-right {
@@ -105,7 +140,14 @@ body {
 
 .sonata-bc .home-tools .tools-group button {
     border: 2px solid #fff;
-    background-color: #318cb8;
+    background-color: #337ab8;
+    min-height: 46px;
+    width: 231px;
+    opacity: 1;
+}
+.sonata-bc .home-tools .tools-group button:hover {
+    border: 2px solid #16c3d0;
+    transition: all 0.3s;
 }
 
 .btctg {
@@ -171,6 +213,10 @@ body {
     background: rgba(235, 235, 235, 0.4);
 }
 
+.products {
+    padding: 25px 0 25px 0;
+}
+
 .l-constrained-4 {
     margin: 0 auto;
     padding: 0 63px;
@@ -216,11 +262,10 @@ body {
     position: absolute;
     top: 0;
     width: 316px;
-    border: 2px solid #224e6b; /*stroke*/
     -webkit-border-radius: 35.81px/35.5px;
     -moz-border-radius: 35.81px/35.5px;
     border-radius: 35.81px/35.5px;
-    background: #224e6b;
+    background: #337ab8;
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box; /*Will not allow bg color to leak outside borders*/
@@ -229,9 +274,12 @@ body {
     font-weight: bold;
     text-align: center;
     margin-left: -161px;
+    border: 2px solid #337ab8;
 }
 .btnintegraciones:hover {
-    background-color: #318CB8;
+    border: 3px solid #16c3d0;
+    transition: all 0.3s;
+    background: #337ab8;
 }
 
 .productos {
@@ -312,20 +360,20 @@ body {
 
 
 .sonata-bc .page-footer {
-	background-color: #e86b58;
+	background-color: #337AB8;
 	color: #fff;
 	margin: 0px;
 }
 
 .sonata-bc .page-footer a {
 	color: #ffffff;
-	font-size: 12px;
+	font-size: 15px;
 }
 
 .sonata-bc .page-footer p.handcraft {
 	margin-top: 15px;
 	color: #ffffff;
-	font-size: 10px;
+	font-size: 15px;
 }
 
 
@@ -383,7 +431,9 @@ body {
     position: relative;
     background: rgba(244, 244, 244, 0.9);
 }
-
+.filter_option span{
+    margin-left: 10px;
+}
 /* End Category Filter Menu*/
 
 

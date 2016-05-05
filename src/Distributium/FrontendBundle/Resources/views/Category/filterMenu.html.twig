@@ -22,7 +22,7 @@
               <div class="panel-body lodgingSizes">
                   {% for lodgingSizeValue,lodgingSizeName in lodgingSizes%}
                       <div class="filter_option hotel group">
-                          <input id="ls_{{lodgingSizeName}}" type="checkbox" name="{{lodgingSizeValue}}" /><span class="hotel-2">{{lodgingSizeName}}</span>
+                          <label><input id="ls_{{lodgingSizeName}}" type="checkbox" name="{{lodgingSizeValue}}" /><span class="hotel-2">{{lodgingSizeName}}</span></label>
                       </div>
                   {% endfor %}
               </div>
@@ -32,16 +32,16 @@
           <div class="panel panel-default">
             <div class="panel-heading menu_filter_title" role="tab" id="headingTwo">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                   Hotel type
                 </a>
               </h4>
             </div>
-            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
               <div class="panel-body lodgingTypes">
                   {% for lodgingType in lodgingTypes%}
                       <div class="filter_option hotel group">
-                          <input id="lt_{{lodgingType.id}}" type="checkbox" name="{{lodgingType.id}}" /><span class="hotel-2">{{lodgingType.name}}</span>
+                          <label><input id="lt_{{lodgingType.id}}" type="checkbox" name="{{lodgingType.id}}" /><span class="hotel-2">{{lodgingType.name}}</span></label>
                       </div>
                   {% endfor %}
               </div>
@@ -51,16 +51,16 @@
           <div class="panel panel-default">
             <div class="panel-heading menu_filter_title" role="tab" id="headingThree">
               <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                   Hotel Rating
                 </a>
               </h4>
             </div>
-            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
               <div class="panel-body lodgingCategories">
                   {% for lodgingCategoryValue,lodgingCategoryName in lodgingCategories %}
                       <div class="filter_option hotel group">
-                          <input id="lc_{{lodgingCategoryName}}" type="checkbox" name="{{lodgingCategoryValue}}" /><span class="hotel-2">{{lodgingCategoryName}}</span>
+                          <label><input id="lc_{{lodgingCategoryName}}" type="checkbox" name="{{lodgingCategoryValue}}" /><span class="hotel-2">{{lodgingCategoryName}}</span></label>
                       </div>
                   {% endfor %}
               </div>
@@ -78,28 +78,28 @@
             <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
               <div class="panel-body">
                   <div class="filter_option hotel group">
-                      <span class="hotel-2">Caribbean</span>
+                      <label><span class="hotel-2">Caribbean</span></label>
                   </div>
                   <div class="filter_option hotel group">
-                      <span class="hotel-2">Central America</span>
+                      <label><span class="hotel-2">Central America</span></label>
                   </div>
                   <div class="filter_option hotel group">
-                      <span class="hotel-2">South America</span>
+                      <label><span class="hotel-2">South America</span></label>
                   </div>
                   <div class="filter_option hotel group">
-                      <span class="hotel-2">North America</span>
+                      <label><span class="hotel-2">North America</span></label>
                   </div>
                   <div class="filter_option hotel group">
-                      <span class="hotel-2">Asia</span>
+                      <label><span class="hotel-2">Asia</span></label>
                   </div>
                   <div class="filter_option hotel group">
-                      <span class="hotel-2">Europe</span>
+                      <label><span class="hotel-2">Europe</span></label>
                   </div>
                   <div class="filter_option hotel group">
-                      <span class="hotel-2">Africa</span>
+                      <label><span class="hotel-2">Africa</span></label>
                   </div>
                   <div class="filter_option hotel group">
-                      <span class="hotel-2">UK</span>
+                      <label><span class="hotel-2">UK</span></label>
                   </div>
               </div>
             </div>
