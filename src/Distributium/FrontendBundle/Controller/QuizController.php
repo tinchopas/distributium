@@ -39,12 +39,7 @@ class QuizController extends Controller
 
         $results = $this->getDoctrine()
             ->getRepository('DistributiumBackendBundle:Item')
-            ->searchQuizResults(
-                $params['lodgingSize'],
-                $params['lodgingCategory'],
-                $params['lodgingType'],
-                $params['lodgingRegion']
-            );
+            ->searchQuizResults($params);
 
         //ldd($results);
 
