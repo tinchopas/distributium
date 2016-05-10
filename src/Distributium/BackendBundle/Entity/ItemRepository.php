@@ -76,7 +76,7 @@ class ItemRepository extends EntityRepository
     {
         $lodgingSizes = $params['lodgingSize'];
         $lodgingCategories = $params['lodgingCategory'];
-        $lodgingTypes = $params['lodgingType'];
+        $lodgingType = $params['lodgingType'];
         $regions = $params['lodgingRegion'];
 
 	    $qb = $this->getEntityManager()->createQueryBuilder();
@@ -138,9 +138,9 @@ class ItemRepository extends EntityRepository
             ')
 
             ->andWhere('(:lodgingSizesMask = 0 OR pms.lodgingSizeMask IS NULL) OR (BIT_AND(pms.lodgingSizeMask, :lodgingSizesMask) = :lodgingSizesMask )')
-            ->andWhere('(:lodgingSizesMask = 0 OR pms.lodgingSizeMask IS NULL) OR (BIT_AND(cm.lodgingSizeMask, :lodgingSizesMask) = :lodgingSizesMask )')
-            ->andWhere('(:lodgingSizesMask = 0 OR pms.lodgingSizeMask IS NULL) OR (BIT_AND(ibe.lodgingSizeMask, :lodgingSizesMask) = :lodgingSizesMask )')
-            ->andWhere('(:lodgingSizesMask = 0 OR pms.lodgingSizeMask IS NULL) OR (BIT_AND(rms.lodgingSizeMask, :lodgingSizesMask) = :lodgingSizesMask )')
+            ->andWhere('(:lodgingSizesMask = 0 OR cm.lodgingSizeMask IS NULL) OR (BIT_AND(cm.lodgingSizeMask, :lodgingSizesMask) = :lodgingSizesMask )')
+            ->andWhere('(:lodgingSizesMask = 0 OR ibe.lodgingSizeMask IS NULL) OR (BIT_AND(ibe.lodgingSizeMask, :lodgingSizesMask) = :lodgingSizesMask )')
+            ->andWhere('(:lodgingSizesMask = 0 OR rms.lodgingSizeMask IS NULL) OR (BIT_AND(rms.lodgingSizeMask, :lodgingSizesMask) = :lodgingSizesMask )')
 
             ->andWhere('(:lodgingCategoriesMask = 0 OR pms.lodgingCategoryMask IS NULL) OR (BIT_AND(pms.lodgingCategoryMask, :lodgingCategoriesMask) = :lodgingCategoriesMask )')
             ->andWhere('(:lodgingCategoriesMask = 0 OR cm.lodgingCategoryMask IS NULL) OR (BIT_AND(cm.lodgingCategoryMask, :lodgingCategoriesMask) = :lodgingCategoriesMask )')
@@ -151,23 +151,19 @@ class ItemRepository extends EntityRepository
             ->setParameter('lodgingCategoriesMask', bindec(array_sum($lodgingCategories)))
             ;
 
-        /*
-        if (!empty($lodgingTypes)) {
-            //$qb->addSelect('lt.name as lodgingType')
-            $qb->innerJoin('i.lodgingTypes', 'lt', 'WITH', 'lt.id IN (:lodgingTypes)')
-                ->setParameter('lodgingTypes', $lodgingTypes)
-                ->setParameter('lodgingTypesCount', count($lodgingTypes))
-                ->groupBy('i.id')
-                ->having('count(i.id) = :lodgingTypesCount')
+        if (!empty($lodgingType)) {
+            $qb->innerJoin('pms.lodgingTypes', 'pms_lt', 'WITH', 'pms_lt.id = :lodgingType')
+                ->innerJoin('cm.lodgingTypes', 'cm_lt', 'WITH', 'cm_lt.id = :lodgingType')
+                ->innerJoin('ibe.lodgingTypes', 'ibe_lt', 'WITH', 'ibe_lt.id = :lodgingType')
+                ->innerJoin('rms.lodgingTypes', 'rms_lt', 'WITH', 'rms_lt.id = :lodgingType')
+                ->setParameter('lodgingType', $lodgingType)
                 ;
 
         }
-         */
 
             
         $result = $qb->getQuery()->getResult();
-        ldd($params, $result);
-        //var_dump($qb->getQuery()->getSQL());exit;
+        //ldd($params, $result);
 
         return $result;
     }
