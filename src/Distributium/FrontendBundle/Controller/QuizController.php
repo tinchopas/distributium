@@ -41,18 +41,6 @@ class QuizController extends Controller
             ->getRepository('DistributiumBackendBundle:Item')
             ->searchQuizResults($params);
 
-        //ldd($results);
-
-        /*
-        $quizResults = [];
-        foreach ($results as $item) {
-            $category = $item->getCategory();
-            $key = sprintf('%s_%s', $item->getId(), $category->getId());
-            $quizResults[$key] = $item->getName();
-        }
-
-        ldd($quizResults);
-         */
 
         return array(
             'results' => $results

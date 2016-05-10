@@ -15,29 +15,33 @@
             {{ sonata_page_render_container('results_integration_top') }}
         </div>
         <div class="row section-form2 text-center interested-tools">
-            <div class="row categories">
-                <div id="4"  class="col-md-2 col-md-offset-2">Revenue Management Sys</div>
-                <div id="3"  class="col-md-2">Property Management Sys</div>
-                <div id="1"  class="col-md-2">Channel Manager</div>
-                <div id="2"  class="col-md-2">Internet Booking Engine</div>
-            </div>
-            <br/>
-            <br/>
-            <div class="row">
-                <div class="col-md-12>
-                  {% for result in results %}
-                    <div class="row">
-                      <div class="col-md-2 col-md-offset-2">{{result.rms_name}}</div>
-                      <div class="col-md-2">{{result.pms_name}}</div>
-                      <div class="col-md-2">{{result.cm_name}}</div>
-                      <div class="col-md-2">{{result.ibe_name}}</div>
-                    </div>
-                  {% endfor %}
-                </div>
-            </div>
-            <br/>
-            <br/>
-            <br/>
+          <table class="table table-condensed">
+            <thead>
+              <tr>
+                <th><input type="checkbox"/></th>
+                <th class="text-center">Revenue Management Sys</th>
+                <th class="text-center">Property Management Sys</th>
+                <th class="text-center">Channel Manager</th>
+                <th class="text-center">Internet Booking Engine</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for result in results %}
+                <tr>
+                  <th><input type="checkbox"/></th>
+                  <td>{{result.rms_name}}</td>
+                  <td>{{result.pms_name}}</td>
+                  <td>{{result.cm_name}}</td>
+                  <td>{{result.ibe_name}}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+
+          <br/>
+          <br/>
+          <br/>
         </div>
     </div>
 </div>
