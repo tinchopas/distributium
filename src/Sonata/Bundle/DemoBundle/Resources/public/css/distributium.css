@@ -33,19 +33,21 @@ input[type=checkbox]:checked + label:before {
 }
 */
 /*End Checkbox*/
-
+a {
+    text-decoration: none !important;
+}
 .btn {
     border-radius: 2.25rem;
 }
 .sonata-bc .container {
-	max-width: 1170px;
+    max-width: 1170px;
 }
 
 .sonata-bc .home-tools {
-	background-color: #337ab8;
-	padding: 66px 0 67px;
-	color: #fff;
-	margin: 0px;
+    background-color: #337ab8;
+    padding: 66px 0 67px;
+    color: #fff;
+    margin: 0px;
 }
 
 .page-header {
@@ -55,15 +57,16 @@ input[type=checkbox]:checked + label:before {
 .page-header .text-right {
     margin: 7px 0 0 0;
 }
-.integrar {
-    margin: 12px 0 -1px 0;
-    color: #318cb8;
-    font-size: 17.999998px;
+.integrar, .buscar, .btnintegraciones { /*no need to make classes, just separate by (,)jaime*/
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #00ccd2;
+    border-radius: 100px;
+    font-size: 18px;
+    padding: 1em;
 }
-.buscar {
-    margin: 0 25px 0;
-    color: #318cb8;
-    font-size: 17.999998px;
+.integrar:hover, .buscar:hover, .bt_integraciones:hover {
+    background: #337ab8 none repeat scroll 0 0;
+    color: #fff;
 }
 .filete {
     height: 42px;
@@ -76,66 +79,63 @@ input[type=checkbox]:checked + label:before {
     color: #318cb8;
     font-size: 17.999998px;
 }
-
-
-
 .text-2 {
-	margin: -4px auto 6px;
-	color: #ffffff;
-	font-size: 25px;
-	font-weight: bold;
-	line-height: 34.66659px;
+    margin: -4px auto 6px;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 34.66659px;
 }
 
 .buscador {
-	margin: 38px auto 0;
-	min-height: 63px;
-	position: relative;
-	width: 832px;
+    margin: 38px auto 0;
+    min-height: 63px;
+    position: relative;
+    width: 832px;
 }
 
 .rounded-rectangle-1-copy {
-	height: 60px;
-	left: 50%;
-	position: absolute;
-	top: 3px;
-	width: 830px;
-	-webkit-border-radius: 30px;
-	-moz-border-radius: 30px;
-	border-radius: 30px;
-	background: #0b2f47;
-	margin-left: -414px;
+    height: 60px;
+    left: 50%;
+    position: absolute;
+    top: 3px;
+    width: 830px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background: #0b2f47;
+    margin-left: -414px;
 }
 
 .rounded-rectangle-1-holder {
-	left: 50%;
-	min-height: 20px;
-	padding: 12px 40px 20px;
-	position: absolute;
-	top: 0;
-	width: 830px;
-	-webkit-border-radius: 30px;
-	-moz-border-radius: 30px;
-	border-radius: 30px;
-	background: #296d91;
-	margin-left: -416px;
+    left: 50%;
+    min-height: 20px;
+    padding: 12px 40px 20px;
+    position: absolute;
+    top: 0;
+    width: 830px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background: #296d91;
+    margin-left: -416px;
 }
 
 .text-3 {
-	margin: 0 0 -2px;
-	opacity: 0.5;
-	color: #ffffff;
-	font-size: 22.000002px;
+    margin: 0 0 -2px;
+    opacity: 0.5;
+    color: #ffffff;
+    font-size: 22.000002px;
 }
 
 .cloud {
-	display: table;
-	margin: 0 auto;
-	position: relative;
+    display: table;
+    margin: 0 auto;
+    position: relative;
 }
 
 .group {
-	zoom: 1;
+    zoom: 1;
 }
 
 .sonata-bc .home-tools .tools-group button {
@@ -146,10 +146,11 @@ input[type=checkbox]:checked + label:before {
     opacity: 1;
 }
 .sonata-bc .home-tools .tools-group button:hover {
-    border: 2px solid #16c3d0;
-    transition: all 0.3s;
+    background: #fff none repeat scroll 0 0;
+    border: 2px solid #00ccd2;
+    color: #337ab8;
+    transition: all 0.3s ease 0s;
 }
-
 .btctg {
     min-height: 46px;
     width: 231px;
@@ -256,6 +257,7 @@ input[type=checkbox]:checked + label:before {
     margin-left: -159px;
 }
 .btnintegraciones {
+     background: #fff none repeat scroll 0 0 ;
     left: 50%;
     min-height: 25px;
     padding: 21px 0;
@@ -277,11 +279,10 @@ input[type=checkbox]:checked + label:before {
     border: 2px solid #337ab8;
 }
 .btnintegraciones:hover {
-    border: 3px solid #16c3d0;
-    transition: all 0.3s;
-    background: #337ab8;
+    background: #337ab8 none repeat scroll 0 0;
+    border: 1px solid #00ccd2;
+    transition: all 0.3s ease 0s;
 }
-
 .productos {
     padding: 82px 0 86px;
     position: relative;
@@ -360,31 +361,31 @@ input[type=checkbox]:checked + label:before {
 
 
 .sonata-bc .page-footer {
-	background-color: #337AB8;
-	color: #fff;
-	margin: 0px;
+    background-color: #337AB8;
+    color: #fff;
+    margin: 0px;
 }
 
 .sonata-bc .page-footer a {
-	color: #ffffff;
-	font-size: 15px;
+    color: #ffffff;
+    font-size: 15px;
 }
 
 .sonata-bc .page-footer p.handcraft {
-	margin-top: 15px;
-	color: #ffffff;
-	font-size: 15px;
+    margin-top: 15px;
+    color: #ffffff;
+    font-size: 15px;
 }
 
 
 
 /* Start Category Filter Menu*/
 .text-6 {
-	margin: 0 0 8px;
-	color: #0b2f47;
-	font-size: 20px;
-	font-weight: bold;
-	text-align: left;
+    margin: 0 0 8px;
+    color: #0b2f47;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: left;
 }
 /*
 .menu_filter .collapsed {
@@ -439,26 +440,26 @@ input[type=checkbox]:checked + label:before {
 
 /* Start Category show*/
 .category_top h3 {
-	color: #318cb8;
+    color: #318cb8;
 }
 .category_top p {
-	color: #224e6b;
+    color: #224e6b;
 }
 .category_show {
         color: #224e6b;
-	margin: 40px 0 0 0;
+    margin: 40px 0 0 0;
 }
 .logo {
-	padding: 8px 10px 8px;
-	position: relative;
-	border: 1px solid #d7d7d7; /*stroke*/
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	background: #ffffff;
-	-moz-background-clip: padding;
-	-webkit-background-clip: padding-box;
-	background-clip: padding-box; /*Will not allow bg color to leak outside borders*/
+    padding: 8px 10px 8px;
+    position: relative;
+    border: 1px solid #d7d7d7; /*stroke*/
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background: #ffffff;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box; /*Will not allow bg color to leak outside borders*/
 }
 .bt_ir-a-web {
     margin: 20px 0 0;
@@ -481,7 +482,7 @@ input[type=checkbox]:checked + label:before {
     margin: 1px 0 0;
     min-height: 46px;
     width: 200px;
-    border: 2px solid #0b2f47; /*stroke*/
+    border: 1px solid #00ccd2; /*stroke*/
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     border-radius: 25px;
