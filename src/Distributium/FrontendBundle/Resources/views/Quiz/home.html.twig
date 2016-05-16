@@ -22,40 +22,134 @@
                 <p class="glyphicon glyphicon-link section-title">¿Que tipo de alojamiento gestionas?</p>
             </div>
             <div class="row">
+
                 <div class="col-md-2 col-md-offset-2">
-                    <select class="form-control" name="lodgingType">
+                    <label for="lodgingType">Tipo</label>
+                    <select class="form-control" id="lodgingType" name="lodgingType">
                         {% for lodgingType in lodgingTypes%}
                             <option id="lt_{{lodgingType.id}}" value="{{lodgingType.id}}" >{{lodgingType.name}}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <select class="form-control" name="lodgingSize[]">
+                    <label for="lodgingSize">Habitaciones</label>
+                    <select class="selectpicker" id="lodgingSize" name="lodgingSize[]">
                         {% for lodgingSizeValue,lodgingSizeName in lodgingSizes%}
                             <option id="ls_{{lodgingSizeName}}" value="{{lodgingSizeValue}}" >{{lodgingSizeName}}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <select class="form-control" name="lodgingCategory[]">
+                    <label for="lodgingCategory">Categoria</label>
+                    <select class="selectpicker" id="lodgingCategory" name="lodgingCategory[]">
                         {% for lodgingCategoryValue,lodgingCategoryName in lodgingCategories%}
                             <option id="lt_{{lodgingCategoryName}}" value="{{lodgingCategoryValue}}" >{{lodgingCategoryName}}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <select class="form-control" name="lodgingRegion">
+                    <label for="lodgingRegion">Region</label>
+                    <select  class="selectpicker" id="lodgingRegion" name="lodgingRegion">
                         {% for lodgingRegionValue,lodgingRegionName in lodgingRegions%}
                             <option id="lt_{{lodgingRegionName}}" value="{{lodgingRegionValue}}" >{{lodgingRegionName}}</option>
                         {% endfor %}
                     </select>
                 </div>
+
             </div>
         </div>
+
+        <div class="row section-form2 text-center">
+            <div class="row">
+                <p class="glyphicon glyphicon-link section-title">¿Qué herramientas te interesan?</p>
+            </div>
+
+
+            <div class="col-md-8 col-md-offset-2">
+
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title text-left">Revenue Management Sys</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="col-md-6">
+                    <div class="row option selector text-left">
+                      <label><input type="radio" name="c_op_4" value="3" checked="true">&nbsp;No tengo RMS y necesito uno</label>
+                    </div>
+                    <div class="row option selector text-left">
+                      <label><input type="radio" name="c_op_4" value="1">&nbsp;Quiero mantener mi RMS actual</label>
+                    </div>
+                    <div class="row option selector text-left">
+                      <label><input type="radio" name="c_op_4" value="2">&nbsp;Quiero cambiar mi RMS actual</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title text-left">Property Management Sys</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="col-md-6">
+                    <div class="row option selector text-left">
+                      <label><input type="radio" name="c_op_3" value="3" checked="true">&nbsp;No tengo PMS y necesito uno</label>
+                    </div>
+                    <div class="row option selector text-left">
+                      <label><input type="radio" name="c_op_3" value="1">&nbsp;Quiero mantener mi PMS actual</label>
+                    </div>
+                    <div class="row option selector text-left">
+                      <label><input type="radio" name="c_op_3" value="2">&nbsp;Quiero cambiar mi PMS actual</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title text-left">Channel Manager</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="col-md-6">
+                    <div class="row option selector text-left">
+                      <label><input type="radio" name="c_op_1" value="3" checked="true">&nbsp;No tengo CM y necesito uno</label>
+                    </div>
+                    <div class="row option selector text-left">
+                      <label><input type="radio" name="c_op_1" value="1">&nbsp;Quiero mantener mi CM actual</label>
+                    </div>
+                    <div class="row option selector text-left">
+                      <label><input type="radio" name="c_op_1" value="2">&nbsp;Quiero cambiar mi CM actual</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title text-left">Internet Booking Engine</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="col-md-6">
+                    <div class="row option selector text-left">
+                      <label><input type="radio" name="c_op_2" value="3" checked="true">&nbsp;No tengo IBE y necesito uno</label>
+                    </div>
+                    <div class="row option selector text-left">
+                      <label><input type="radio" name="c_op_2" value="1">&nbsp;Quiero mantener mi IBE actual</label>
+                    </div>
+                    <div class="row option selector text-left">
+                      <label><input type="radio" name="c_op_2" value="2">&nbsp;Quiero cambiar mi IBE actual</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+        </div>
+
+
         <div class="row section-form2 text-center interested-tools">
             <div class="row">
                 <p class="glyphicon glyphicon-link section-title">¿Qué herramientas te interesan?</p>
             </div>
+
             <div class="row categories">
                 <div id="4" rel="{{path('distributium_frontend_category_showproducts', { 'category': 4 })}}" class="col-md-2 col-md-offset-2">Revenue Management Sys</div>
                 <div id="3" rel="{{path('distributium_frontend_category_showproducts', { 'category': 3 })}}" class="col-md-2">Property Management Sys</div>
@@ -66,7 +160,7 @@
             <div id="product-options" class="row text-left"></div>
             </div>
         </div>
-        <div class="row section-form2 text-center search">
+        <div class="row section-form2 text-left search">
             <div class="row">
                 <p class="glyphicon glyphicon-link section-title">Your selection</p>
             </div>
