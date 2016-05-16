@@ -57,10 +57,11 @@ a {
 .page-header .text-right {
     margin: 7px 0 0 0;
 }
-.integrar, .buscar, .btnintegraciones { /*no need to make classes, just separate by (,)jaime*/
+.integrar, .buscar { /*no need to make classes, just separate by (,)jaime*/
     background: #fff none repeat scroll 0 0;
     border: 1px solid #00ccd2;
     border-radius: 100px;
+    color: #337ab8;
     font-size: 18px;
     padding: 1em;
 }
@@ -276,7 +277,7 @@ a {
     font-weight: bold;
     text-align: center;
     margin-left: -161px;
-    border: 2px solid #337ab8;
+    border: 1px solid #00ccd2;
 }
 .btnintegraciones:hover {
     background: #337ab8 none repeat scroll 0 0;
