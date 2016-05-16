@@ -565,5 +565,7 @@ a {
     min-height: 50px;
     cursor: pointer;
 }
-
+.quiz_home .selectpicker {
+    width: 100%;
+}
 /* End Quiz home*/
