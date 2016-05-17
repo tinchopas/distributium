@@ -147,12 +147,13 @@ a {
     min-height: 46px;
     width: 231px;
     opacity: 1;
+    transition: 0.2s all;
 }
 .sonata-bc .home-tools .tools-group button:hover {
     background: #fff none repeat scroll 0 0;
-    border: 2px solid #00ccd2;
+    border: 2px solid #F1F1F1;
     color: #337ab8;
-    transition: all 0.3s ease 0s;
+    transition: all .3s ease 0;
 }
 .btctg {
     min-height: 46px;
