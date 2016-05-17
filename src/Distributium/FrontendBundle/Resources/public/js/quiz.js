@@ -1,7 +1,39 @@
 
 $(document).ready(function(){
+
+    $(".selector input").each(function(){
+    
+        //console.log($(this).attr('name'));
+
+        if ($(this).prop('checked')) {
+            select = $('#' + $(this).attr('name') + '_val');
+            updateProductList(select);
+        }
+    
+
+    });
+
     //refreshProductList();
 });
+
+$('.selector input').click(function() {
+    select = $('#' + $(this).attr('name') + '_val');
+
+    if (! select.is(':empty')) {
+        return;
+    }
+
+    updateProductList(select);
+
+    //select.append(selectContainer);
+
+    //console.log(selectContainer);
+});
+$('.noselector input').click(function() {
+    select = $('#' + $(this).attr('name') + '_val');
+    select.empty();
+});
+
 
 $("#quiz_search").click(function(){
     alert($(this).attr("rel"));
@@ -57,7 +89,7 @@ function registerSelectedProduct() {
     //nextStep();
 };
 
-function updateProductList(url)
+function updateProductList(selector)
 {
     var params = {};
     var lodgingSizes = [];
@@ -72,19 +104,18 @@ function updateProductList(url)
     params['regions'] = regions;
 
     $.ajax({
-        url: url,
+        url: selector.attr('rel'),
         dataType: 'jsonp',
         method: 'post',
         data: JSON.stringify(params),
         success: function(dataWeGotViaJsonp){
 
             selectContainer = $('<div>');
-            selectContainer.addClass('col-md-3');
+            selectContainer.addClass('col-md-10');
             selectContainer.attr('id', 'selectContainer');
-            selectContainer.addClass('hidden');
 
             select = $('<select>');
-            select.attr("name", "c_op_val_" + $('.categories .categoryClicked').attr('id'));
+            select.attr("name", selector.attr('id'));
             select.addClass("form-control");
 
             select.bind("click", registerSelectedProduct);
@@ -99,7 +130,10 @@ function updateProductList(url)
             }
 
             selectContainer.html(select);
-            $('#product-options').append(selectContainer);
+            selector.append(selectContainer);
+            //console.log(selector.attr('rel'));
+            //$('#product-options').append(selectContainer);
+            //return selectContainer;
         }
     });
 }

@@ -98,33 +98,33 @@ class ItemRepository extends EntityRepository
             ;
 
         if ($params['c_op_3'] == 1) {
-            $qb->where('pms.id = ' . $params['c_op_val_3']);
+            $qb->where('pms.id = ' . $params['c_op_3_val']);
         } elseif ($params['c_op_3'] == 2) {
-            $qb->where('pms.category = 3 AND pms.id != '. $params['c_op_val_3']);
+            $qb->where('pms.category = 3 AND pms.id != '. $params['c_op_3_val']);
         } else {
             $qb->where('pms.category = 3');
         }
 
         if ($params['c_op_1'] == 1) {
-            $qb->andWhere('cm.id = ' . $params['c_op_val_1']);
+            $qb->andWhere('cm.id = ' . $params['c_op_1_val']);
         } elseif ($params['c_op_1'] == 2) {
-            $qb->andWhere('cm.category = 1 AND cm.id != '. $params['c_op_val_1']);
+            $qb->andWhere('cm.category = 1 AND cm.id != '. $params['c_op_1_val']);
         } else {
             $qb->andWhere('cm.category = 1');
         }
 
         if ($params['c_op_2'] == 1) {
-            $qb->andWhere('ibe.id = ' . $params['c_op_val_2']);
+            $qb->andWhere('ibe.id = ' . $params['c_op_2_val']);
         } elseif ($params['c_op_2'] == 2) {
-            $qb->andWhere('ibe.category = 2 AND ibe.id != '. $params['c_op_val_2']);
+            $qb->andWhere('ibe.category = 2 AND ibe.id != '. $params['c_op_2_val']);
         } else {
             $qb->andWhere('ibe.category = 2');
         }
 
         if ($params['c_op_4'] == 1) {
-            $qb->andWhere('rms.id = ' . $params['c_op_val_4']);
+            $qb->andWhere('rms.id = ' . $params['c_op_4_val']);
         } elseif ($params['c_op_4'] == 2) {
-            $qb->andWhere('rms.category = 4 AND rms.id != '. $params['c_op_val_4']);
+            $qb->andWhere('rms.category = 4 AND rms.id != '. $params['c_op_4_val']);
         } else {
             $qb->andWhere('rms.category = 4');
         }

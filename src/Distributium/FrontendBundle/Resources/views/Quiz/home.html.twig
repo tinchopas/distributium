@@ -74,7 +74,7 @@
                 </div>
                 <div class="panel-body">
                   <div class="col-md-6">
-                    <div class="row option selector text-left">
+                    <div class="row option noselector text-left">
                       <label><input type="radio" name="c_op_4" value="3" checked="true">&nbsp;No tengo RMS y necesito uno</label>
                     </div>
                     <div class="row option selector text-left">
@@ -84,6 +84,9 @@
                       <label><input type="radio" name="c_op_4" value="2">&nbsp;Quiero cambiar mi RMS actual</label>
                     </div>
                   </div>
+                  <div class="col-md-6">
+                    <div id="c_op_4_val" class="row text-left" rel="{{path('distributium_frontend_category_showproducts', { 'category': 4 })}}"></div>
+                  </div>
                 </div>
               </div>
               <div class="panel panel-default">
@@ -92,7 +95,7 @@
                 </div>
                 <div class="panel-body">
                   <div class="col-md-6">
-                    <div class="row option selector text-left">
+                    <div class="row option noselector text-left">
                       <label><input type="radio" name="c_op_3" value="3" checked="true">&nbsp;No tengo PMS y necesito uno</label>
                     </div>
                     <div class="row option selector text-left">
@@ -102,6 +105,9 @@
                       <label><input type="radio" name="c_op_3" value="2">&nbsp;Quiero cambiar mi PMS actual</label>
                     </div>
                   </div>
+                  <div class="col-md-6">
+                    <div id="c_op_3_val" class="row text-left" rel="{{path('distributium_frontend_category_showproducts', { 'category': 3 })}}"></div>
+                  </div>
                 </div>
               </div>
               <div class="panel panel-default">
@@ -110,7 +116,7 @@
                 </div>
                 <div class="panel-body">
                   <div class="col-md-6">
-                    <div class="row option selector text-left">
+                    <div class="row option noselector text-left">
                       <label><input type="radio" name="c_op_1" value="3" checked="true">&nbsp;No tengo CM y necesito uno</label>
                     </div>
                     <div class="row option selector text-left">
@@ -120,6 +126,9 @@
                       <label><input type="radio" name="c_op_1" value="2">&nbsp;Quiero cambiar mi CM actual</label>
                     </div>
                   </div>
+                  <div class="col-md-6">
+                    <div id="c_op_1_val" class="row text-left" rel="{{path('distributium_frontend_category_showproducts', { 'category': 1 })}}"></div>
+                  </div>
                 </div>
               </div>
               <div class="panel panel-default">
@@ -128,7 +137,7 @@
                 </div>
                 <div class="panel-body">
                   <div class="col-md-6">
-                    <div class="row option selector text-left">
+                    <div class="row option noselector text-left">
                       <label><input type="radio" name="c_op_2" value="3" checked="true">&nbsp;No tengo IBE y necesito uno</label>
                     </div>
                     <div class="row option selector text-left">
@@ -138,6 +147,9 @@
                       <label><input type="radio" name="c_op_2" value="2">&nbsp;Quiero cambiar mi IBE actual</label>
                     </div>
                   </div>
+                  <div class="col-md-6">
+                    <div id="c_op_2_val" class="row text-left" rel="{{path('distributium_frontend_category_showproducts', { 'category': 2 })}}"></div>
+                  </div>
                 </div>
               </div>
 
@@ -146,6 +158,15 @@
         </div>
 
 
+        <div class="row text-center">
+            <input type="submit" value="Search Results" class="btn btn-primary"/>
+        </div>
+        <br/>
+        <br/>
+
+
+
+{#
         <div class="row section-form2 text-center interested-tools">
             <div class="row">
                 <p class="glyphicon glyphicon-link section-title">¿Qué herramientas te interesan?</p>
@@ -201,12 +222,16 @@
                     <label id="c_op_val_2"></label>
                     <input type=text class="hidden" name="c_op_val_2"/>
                 </div>
-                <div class="row">
-                    <input type="submit" value="Search Results" class="btn btn-primary"/>
-                </div>
 
 
         </div>
+
+
+
+                <div class="row">
+                    <input type="submit" value="Search Results" class="btn btn-primary"/>
+                </div>
+#}
         </form>
 
 
