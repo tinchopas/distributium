@@ -60,7 +60,7 @@ a {
 }
 .integrar, .buscar { /*no need to make classes, just separate by (,)jaime*/
     background: #fff none repeat scroll 0 0;
-    border: 1px solid #00ccd2;
+    border: 1px solid #337AB8;
     border-radius: 100px;
     color: #337ab8;
     font-size: 18px;
