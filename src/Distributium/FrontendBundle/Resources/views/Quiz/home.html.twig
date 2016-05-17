@@ -11,10 +11,11 @@
 
 <div class="row quiz_home">
     <div class="col-md-10 col-md-offset-1">
+    {#
         <div class="row text-center services-integration">
             {{ sonata_page_render_container('integration_top') }}
         </div>
-
+#}
         <form id="submit-search" class="text-left"  method="post" action="{{path('distributium_frontend_quiz_results')}}">
 
         <div class="row section-form1 text-center lodging-type">
@@ -25,7 +26,7 @@
 
                 <div class="col-md-2 col-md-offset-2">
                     <label for="lodgingType">Tipo</label>
-                    <select class="form-control" id="lodgingType" name="lodgingType">
+                    <select class="selectpicker" id="lodgingType" name="lodgingType">
                         {% for lodgingType in lodgingTypes%}
                             <option id="lt_{{lodgingType.id}}" value="{{lodgingType.id}}" >{{lodgingType.name}}</option>
                         {% endfor %}
