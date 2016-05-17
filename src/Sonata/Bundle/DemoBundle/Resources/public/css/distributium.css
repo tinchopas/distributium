@@ -68,6 +68,7 @@ a {
 .integrar:hover, .buscar:hover, .bt_integraciones:hover {
     background: #337ab8 none repeat scroll 0 0;
     color: #fff;
+    -webkit-transition: all 0.2s;
 }
 .filete {
     height: 42px;
@@ -483,7 +484,7 @@ a {
     margin: 1px 0 0;
     min-height: 46px;
     width: 200px;
-    border: 1px solid #00ccd2; /*stroke*/
+    border: 1px solid #337ab8;
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     border-radius: 25px;
