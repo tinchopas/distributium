@@ -63,7 +63,7 @@ a {
     border: 1px solid #337AB8;
     border-radius: 100px;
     color: #337ab8;
-    font-size: 18px;
+    font-size: 14px;
     padding: 1em;
 }
 .integrar:hover, .buscar:hover, .bt_integraciones:hover {
@@ -281,11 +281,13 @@ a {
     text-align: center;
     margin-left: -161px;
     border: 1px solid #00ccd2;
+    transition: 0.1s all;
 }
+
 .btnintegraciones:hover {
-    background: #337ab8 none repeat scroll 0 0;
-    border: 1px solid #00ccd2;
-    transition: all 0.3s ease 0s;
+    background: rgb(247, 247, 247) none repeat scroll 0 0;
+    border: 1px solid #337ab8;
+    transition: all .3s ease 0;
 }
 .productos {
     padding: 82px 0 86px;
