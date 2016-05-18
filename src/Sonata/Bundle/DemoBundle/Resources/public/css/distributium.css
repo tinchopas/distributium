@@ -65,23 +65,28 @@ a {
     color: #337ab8;
     font-size: 14px;
     padding: 1em;
+    font-weight: 900;
 }
+
 .integrar:hover, .buscar:hover, .bt_integraciones:hover {
     background: #337ab8 none repeat scroll 0 0;
     color: #fff;
     -webkit-transition: all 0.2s;
 }
+
 .filete {
     height: 42px;
     margin: 0 0 0 32px;
     width: 1px;
     background: #318cb8;
 }
+
 .langs {
     margin: 10px 0 -1px 35px;
     color: #318cb8;
     font-size: 17.999998px;
 }
+
 .text-2 {
     margin: -4px auto 6px;
     color: #ffffff;
