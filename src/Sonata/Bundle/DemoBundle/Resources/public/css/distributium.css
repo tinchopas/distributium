@@ -153,10 +153,11 @@ a {
     width: 231px;
     opacity: 1;
     transition: 0.2s all;
+    padding: 1em;
 }
 .sonata-bc .home-tools .tools-group button:hover {
     background: #fff none repeat scroll 0 0;
-    border: 2px solid #F1F1F1;
+    border: 1px solid #F1F1F1;
     color: #337ab8;
     transition: all .3s ease 0;
 }
