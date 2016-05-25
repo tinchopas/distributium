@@ -220,11 +220,12 @@ a {
 .integraciones {
     padding: 67px 0 69px;
     position: relative;
-    background: rgba(235, 235, 235, 0.4);
+    background: rgb(255, 255, 255);
 }
 
 .products {
     padding: 25px 0 25px 0;
+    display: none;
 }
 
 .l-constrained-4 {
@@ -265,8 +266,9 @@ a {
     background-clip: padding-box; /*Will not allow bg color to leak outside borders*/
     margin-left: -159px;
 }
+
 .btnintegraciones {
-     background: #fff none repeat scroll 0 0 ;
+    background: #fff none repeat scroll 0 0;
     left: 50%;
     min-height: 25px;
     padding: 21px 0;
@@ -279,21 +281,34 @@ a {
     background: #337ab8;
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
-    background-clip: padding-box; /*Will not allow bg color to leak outside borders*/
-    color: #ffffff;
+    background-clip: padding-box;
+    color: #fff;
     font-size: 23.040003px;
     font-weight: bold;
     text-align: center;
     margin-left: -161px;
-    border: 1px solid #00ccd2;
-    transition: 0.1s all;
+    border: 1px solid #337ab8;
+    transition: .1s all;
 }
 
 .btnintegraciones:hover {
-    background: rgb(247, 247, 247) none repeat scroll 0 0;
+    background: rgb(255, 255, 255);
     border: 1px solid #337ab8;
     transition: all .3s ease 0;
 }
+
+.btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+.btn-primary:hover {
+    color: #337ab8;
+    background-color: #286090;
+    border-color: #204d74;
+}
+
 .productos {
     padding: 82px 0 86px;
     position: relative;
