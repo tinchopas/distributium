@@ -66,6 +66,7 @@ a {
     font-size: 14px;
     padding: 1em;
     font-weight: 900;
+    box-shadow: 0 3px #08c;
 }
 
 .integrar:hover, .buscar:hover, .bt_integraciones:hover {
@@ -147,13 +148,14 @@ a {
 }
 
 .sonata-bc .home-tools .tools-group button {
-    border: 2px solid #fff;
+    border: 1px solid #fff;
     background-color: #337ab8;
     min-height: 46px;
     width: 231px;
     opacity: 1;
     transition: 0.2s all;
     padding: 1em;
+    box-shadow: 1.5px 1.5px #f4f4f4;
 }
 .sonata-bc .home-tools .tools-group button:hover {
     background: #fff none repeat scroll 0 0;
@@ -293,21 +295,22 @@ a {
 }
 
 .btnintegraciones:hover {
-    background: rgb(255, 255, 255);
+    background: #337ab8;
     border: 1px solid #337ab8;
     transition: all .3s ease 0;
 }
 
 .btn-primary {
-    color: #fff;
-    background-color: #337ab7;
+    color: #337ab8;
+    background-color: #ffffff;
     border-color: #2e6da4;
 }
 
 .btn-primary:hover {
-    color: #337ab8;
-    background-color: #286090;
+    color: #ffffff;
     border-color: #204d74;
+    background: #337ab8 none repeat scroll 0 0;
+    -webkit-transition: all .2s;
 }
 
 .productos {
